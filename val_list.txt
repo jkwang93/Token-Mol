@@ -1,0 +1,84 @@
+smiles,protein_path
+C N ( C C [C@H] ( N ) C C ( = O ) N [C@H] 1 C C [C@H] ( N 2 C = C [C@@] ( N ) ( O ) N C 2 = O ) O [C@@H] 1 C ( = O ) O ) C ( = N ) N GEO 2.15 -0.46 2.79 1.24 3.14 2.88 -2.96 2.34 2.58 -1.48,BSD_ASPTE_1_130_0/2z3h_A_rec_1wn6_bst_lig_tt_docked_3_pocket10.pdb
+C O c 1 c c ( O C ) c ( S ( = O ) ( = O ) N C c 2 c c c c c 2 N 2 C C C C C 2 ) c c 1 N C ( C ) = O GEO -3.05 0.63 -1.54 1.68 -1.45 1.51 -1.35 2.08 3.14,GLMU_STRPN_2_459_0/4aaw_A_rec_4ac3_r83_lig_tt_min_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@] ( = O ) ( O ) O [P@] ( N ) ( = O ) O ) [C@@H] ( O ) [C@H] 1 O GEO 3.13 2.48 -1.88 1.33 2.16 1.24,GRK4_HUMAN_1_578_0/4yhj_A_rec_4yhj_an2_lig_tt_min_0_pocket10.pdb
+N c 1 c c ( S ( O ) ( O ) O ) c ( N ) c 2 c 1 C ( = O ) c 1 c c c c c 1 C 2 = O GEO 0.86,GSTP1_HUMAN_2_210_0/14gs_A_rec_20gs_cbd_lig_tt_min_0_pocket10.pdb
+C C ( C ) N C [C@H] ( O ) C O c 1 c c c c 2 c c c c c 1 2 GEO -1.37 1.87 2.07 -0.55 -2.82 -3.14,GUX1_HYPJE_18_451_0/2v3r_A_rec_1dy4_snp_lig_tt_docked_1_pocket10.pdb
+C C ( C ) [C@@H] 1 N C ( = O ) [C@] 2 ( C ) C S C ( = N 2 ) c 2 c c c c ( n 2 ) C N C ( = O ) C [C@@H] ( / C = C / C C S ) N C 1 = O GEO -2.28 -0.19 1.55 2.51 2.69,HDAC8_HUMAN_1_377_0/4rn0_B_rec_4rn1_l8g_lig_tt_min_0_pocket10.pdb
+C [C@H] ( C C C ( N ) = O ) [C@H] 1 C C [C@H] 2 [C@@H] 3 C ( = O ) C [C@@H] 4 C [C@H] ( O ) C C [C@] 4 ( C ) [C@H] 3 C C [C@@] 2 1 C GEO 2.93 2.01 -2.51 -0.77,HDHA_ECOLI_1_255_0/1fmc_B_rec_1fmc_cho_lig_tt_docked_1_pocket10.pdb
+C C 1 = C ( O [P@] ( = O ) ( O ) O C [C@H] 2 O [C@@H] ( n 3 c n c 4 c ( = O ) n c ( N ) [nH] c 4 3 ) [C@H] ( O ) [C@@H] 2 O ) C ( C ) C ( = O ) N = C 1 C C ( = O ) O GEO 3.14 -3.08 0.33 -1.92 -2.60 3.00 0.72 -0.76,HMD_METJA_1_358_0/3daf_A_rec_3daf_feg_lig_tt_docked_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO 3.14 -0.62 1.08 -0.05 1.04 -0.44,IPMK_HUMAN_49_416_0/5w2g_A_rec_5w2i_adp_lig_tt_min_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@] ( = O ) ( O ) O [P@] ( = O ) ( O ) N P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO 2.99 -1.12 2.11 0.05 2.87 -3.14 1.88 1.30,KS6A3_HUMAN_41_357_0/3g51_A_rec_3g51_anp_lig_tt_min_0_pocket10.pdb
+C c 1 n c c ( C O P ( = O ) ( O ) O ) c ( C ) c 1 O GEO 0.35 2.65 -0.77,LAT_MYCTU_1_449_0/2jjg_A_rec_2jjg_plp_lig_tt_min_0_pocket10.pdb
+C N C C C C [C@H] ( N ) C ( = O ) O GEO -2.83 -2.85 2.80 3.14 -3.14 -0.93,LMBL1_HUMAN_198_526_0/2rhy_A_rec_2rhy_mlz_lig_tt_min_0_pocket10.pdb
+C N C C C C [C@H] ( N ) C ( = O ) O GEO 3.12 3.08 2.66 -2.10 -2.06 -1.91,LMBL1_HUMAN_198_526_0/2pqw_A_rec_2rhy_mlz_lig_tt_min_0_pocket10.pdb
+C O C C O c 1 c n c ( N ) n c 1 C 1 = C N = C 2 C = C C ( C # C C ( C ) ( C ) O ) = C C 1 2 GEO 2.19 -0.38 -2.74 -1.70 2.99 3.14 0.01 -0.30,M3K14_HUMAN_321_678_0/4g3d_B_rec_4idv_13v_lig_tt_min_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO -0.45 -3.14 -3.14 -2.43,MENE_BACSU_2_486_0/5bur_A_rec_5x8f_amp_lig_tt_docked_7_pocket10.pdb
+C C ( = O ) N [C@H] 1 / C ( = N / O C ( = O ) N c 2 c c c c c 2 ) O [C@H] ( C = O ) [C@@H] ( O ) [C@@H] 1 O GEO -2.16 2.54 1.90 3.14 -2.41 -2.71 1.52 0.16,NAGZ_VIBCH_1_330_0/3gs6_A_rec_2oxn_oan_lig_tt_docked_4_pocket10.pdb
+C [C@H] ( N C ( = O ) [C@H] ( C c 1 c c c ( - c 2 c c c c c 2 ) c c 1 ) C [P@@] ( = O ) ( O ) [C@H] ( C ) N ) C ( = O ) O GEO 2.87 -1.99 3.14 -3.14 2.66 2.49 0.90 -0.60 -2.10 2.39,NEP_HUMAN_54_750_0/1r1h_A_rec_1r1h_bir_lig_tt_docked_1_pocket10.pdb
+C n 1 c ( / C = C / C O ) c ( C O ) c 2 c 1 C ( = O ) C = C ( N 1 C C 1 ) C 2 = O GEO 1.98 -2.88 -1.11 -1.10 0.02,NQO1_HUMAN_2_274_0/1dxo_C_rec_1gg5_e09_lig_tt_min_0_pocket10.pdb
+C O C 1 = C C ( = O ) c 2 c ( c ( C O c 3 c c c c c 3 ) c ( C ) n 2 C ) C 1 = O GEO -0.91 0.21 2.68 2.47,NQO1_HUMAN_2_274_0/1gg5_A_rec_1kbo_340_lig_tt_min_0_pocket10.pdb
+C C O C ( = O ) c 1 c c c ( N C ( = O ) c 2 c 3 c ( n n 2 - c 2 c c c c c 2 ) C C N ( S ( = O ) ( = O ) c 2 c c c s 2 ) C 3 ) c c 1 GEO 3.14 3.14 -0.84 3.14 -2.71 -1.69 0.00 1.28 -0.04,NR1H4_HUMAN_258_486_0/5q0k_A_rec_5q0q_9ld_lig_tt_docked_0_pocket10.pdb
+C C C C C c 1 c c ( O ) c c ( O ) c 1 C ( = O ) O GEO 3.14 1.17 3.02 -2.18 1.06,OLIAC_CANSA_1_101_0/5b08_A_rec_5b09_4mx_lig_tt_min_0_pocket10.pdb
+O = S ( = O ) ( c 1 c c c c 2 c n c c c 1 2 ) N 1 C C C N C C 1 GEO -1.68 0.88,PAK4_HUMAN_291_591_ATP_0/5i0b_A_rec_5vef_m77_lig_tt_min_0_pocket10.pdb
+N = c 1 n c [nH] c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@@] ( = O ) ( O ) O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO -2.14 -0.05 2.66 -3.14 1.90 -0.90 -3.14 3.14,PHKG1_RABIT_6_296_ATPsite_0/1phk_A_rec_1phk_atp_lig_tt_min_0_pocket10.pdb
+O C C O C C O C C O C C O GEO -1.78 -2.71 2.29 3.14 2.95 -2.62 -2.41 2.85 -2.83 2.76,PHP_SULSO_1_314_0/4keu_A_rec_4ket_pg4_lig_tt_min_0_pocket10.pdb
+C O c 1 c c ( / C = C / C ( = O ) O ) c c ( O C ) c 1 O GEO -3.14 -0.82 3.14 1.16 2.82,COTA_BACSU_1_513_0/4q8b_B_rec_4q8b_sxx_lig_tt_min_0_pocket10.pdb
+C C 1 ( C ) C [C@H] 2 C [C@H] ( C ( = O ) O ) [C@@H] 3 C O C ( = O ) [C@] 4 ( C O 4 ) [C@@] 3 2 C 1 GEO -2.98,PNTM_STRAE_2_398_0/5l1v_A_rec_5l1v_7pf_lig_tt_docked_0_pocket10.pdb
+C C C C C C C C C C C C C C C C ( = O ) O GEO -3.14 -0.22 -1.90 -1.22 -2.37 -3.14 -2.29 -1.36 -2.91 2.38 -3.14 -1.84 -2.69 -0.19,CPXB_BACMB_2_464_0/4zfa_A_rec_1smj_pam_lig_tt_min_0_pocket10.pdb
+C C O C ( = O ) C N C ( = O ) N C c 1 c c c ( N ) c c 1 GEO -1.89 3.14 2.82 -1.88 -0.93 2.29 -3.14 -3.14,PPIA_HUMAN_1_165_0/2rma_A_rec_3rdd_ea4_lig_tt_docked_0_pocket10.pdb
+N c 1 c c ( N 2 C C C C C 2 ) n c ( N ) [n+] 1 [O-] GEO -0.22,PTGIS_HUMAN_20_500_0/3b6h_A_rec_3b6h_mxd_lig_tt_min_0_pocket10.pdb
+c 1 c c c ( C n 2 c c n c 2 ) c c 1 GEO -0.10 1.40,QPCT_HUMAN_33_361_0/2zen_A_rec_2afx_1bn_lig_tt_docked_7_pocket10.pdb
+O = C ( C O ) [C@H] ( O ) [C@H] ( O ) C O P ( = O ) ( O ) O GEO -2.06 0.92 1.72 2.75 2.76 -2.23,RIBB_VIBCH_2_218_0/4p6p_A_rec_4p77_5rp_lig_tt_docked_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@] ( = O ) ( O ) O [P@@] ( = O ) ( O ) C P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO -0.23 0.85 -2.53 3.14 -1.42 -1.53 3.08 0.49,ROCO4_DICDI_1009_1292_0/4f1m_A_rec_4f1m_acp_lig_tt_min_0_pocket10.pdb
+N c 1 c c n ( [C@H] 2 C C [C@@H] ( C O P ( = O ) = O ) O 2 ) c ( = O ) n 1 GEO -2.15 0.47 2.23 -1.82,DPO4_SULSO_1_347_0/4tqr_A_rec_2xca_doc_lig_tt_min_0_pocket10.pdb
+C C C C C C C C ( = O ) O C [C@@H] ( O ) C O GEO 3.14 -2.48 2.37 -0.63 3.14 -0.96 -3.14 1.96 0.65 -1.96,SDIA_ECOLI_1_171_0/4lfu_A_rec_4y13_480_lig_tt_min_0_pocket10.pdb
+N C C [C@H] ( N ) C ( = O ) N 1 C C C C C 1 GEO 2.34 0.37 -0.69 -3.06,DPP2_HUMAN_27_492_0/3jyh_A_rec_3n0t_opy_lig_tt_min_0_pocket10.pdb
+C C 1 = C ( / C = C / C ( = O ) O ) C ( C ) N = C 1 / C = C 1 \ C ( = O ) N c 2 c c c c c 2 1 GEO -1.33 -2.98 1.31 -0.33 3.02,TBK1_HUMAN_1_303_0/4iwq_A_rec_4jlc_su6_lig_tt_min_0_pocket10.pdb
+C C C C C C ( = O ) C C ( = O ) N [C@H] 1 C = C O C 1 = O GEO -3.14 -3.12 -2.53 -1.51 -1.50 -2.15 -3.14 2.55,TRAR_RHIRD_1_234_0/1l3l_A_rec_1l3l_lae_lig_tt_min_0_pocket10.pdb
+N C c 1 n c 2 c c c c c 2 s 1 GEO 0.52,UBE2T_HUMAN_1_156_0/5ngz_A_rec_5ngz_2bg_lig_tt_min_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 1 O GEO -2.71 -0.93 2.19 0.87 3.14 2.35,VAOX_PENSI_1_560_0/1e8h_A_rec_1e8h_adp_lig_tt_min_0_pocket10.pdb
+N c 1 n c ( = O ) c 2 n c n ( [C@@H] 3 O [C@H] ( C O [P@@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 3 O ) c 2 [nH] 1 GEO 3.14 0.60 2.48 1.60 2.91 2.35,EFTU1_ECOLI_2_178_0/2hcj_B_rec_2hcj_gdp_lig_tt_docked_0_pocket10.pdb
+N C ( = O ) C 1 = C C C ( O C P ( = O ) ( O ) O ) = C 2 C 1 = C c 1 s c n c 1 2 GEO 1.46 2.08 2.66 -0.96,F16P1_HUMAN_1_338_0/3kc1_A_rec_3kc1_2t6_lig_tt_min_0_pocket10.pdb
+O = C ( N c 1 c c c c ( C ( F ) ( F ) F ) c 1 ) N c 1 c c ( S ( = O ) ( = O ) N C 2 C C 2 ) c c c 1 - c 1 c c s c 1 GEO 2.07 2.39 0.43 2.30 -2.51 -1.07 1.53 -2.94 2.32,IDHP_HUMAN_40_452_0/4ja8_B_rec_4ja8_1k9_lig_tt_docked_0_pocket10.pdb
+C N C c 1 c c c c ( - c 2 c c c n c 2 ) c 1 GEO 1.89 -2.37 -0.24,IMA1_HUMAN_68_497_0/4u5s_A_rec_4u54_3c5_lig_tt_min_0_pocket10.pdb
+N c 1 n c n c 2 c 1 n c n 2 [C@@H] 1 O [C@H] ( C O S ( O ) ( O ) N C ( = O ) [C@@H] ( N ) C C C ( = O ) O ) [C@@H] ( O ) [C@H] 1 O GEO 2.83 -0.41 2.63 -1.77 -2.10 -1.07 1.44 2.99 1.95 1.53,MCCF_ECOLX_1_344_0/4iiy_A_rec_3tle_gsu_lig_tt_docked_12_pocket10.pdb
+O = c 1 c c n ( [C@@H] 2 O [C@H] ( C O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 2 O ) c ( = O ) [nH] 1 GEO 2.97 0.90 2.00 -0.20 1.48 3.14,MURA_ECOLI_1_419_catalytic_0/3v4t_A_rec_4e7f_udp_lig_tt_min_0_pocket10.pdb
+C c 1 c c ( N ) n c ( C C c 2 c c c c ( C C c 3 c c ( C ) n c ( N ) c 3 ) c 2 ) c 1 GEO -2.59 -2.06 0.99 -2.11 -3.12 -2.58,NOS1_HUMAN_302_723_0/3tym_A_rec_3n5v_xfh_lig_tt_min_0_pocket10.pdb
+C c 1 c c ( N ) n c ( C C c 2 c c c c ( C C c 3 c c ( C ) n c ( N ) c 3 ) n 2 ) c 1 GEO 1.24 1.98 -1.34 0.57 2.69 -0.03,NOS1_HUMAN_302_723_0/4d7o_A_rec_3n5z_xfm_lig_tt_min_0_pocket10.pdb
+C C S C ( = N ) N GEO 1.68 2.11,NOS2_HUMAN_78_505_0/3ej8_A_rec_2nsi_itu_lig_tt_min_0_pocket10.pdb
+C C S C ( = N ) N GEO -0.72 2.08,NOS3_HUMAN_65_480_0/1rs9_A_rec_1dmk_itu_lig_tt_min_0_pocket10.pdb
+C c 1 c c ( N ) n c ( C [C@@H] 2 C N C [C@@H] 2 O C C C C C c 2 c c c c n 2 ) c 1 GEO 1.36 1.99 -3.14 3.14 -2.45 -2.33 3.14 -3.14 -1.62,NOS3_HUMAN_65_480_0/4kcq_A_rec_4cwv_hw8_lig_tt_min_0_pocket10.pdb
+N C ( = O ) [C@H] 1 C C C C 2 = C 3 C = C ( Cl ) C = C C 3 N = C 2 1 GEO -2.63,NPD_THEMA_1_246_0/3pdh_A_rec_4buz_ocz_lig_tt_min_0_pocket10.pdb
+C C 1 = C ( C C O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) S C N 1 C c 1 c n c ( C ) n c 1 N GEO -0.96 0.65 2.69 -2.76 -1.81 -1.58 -0.75 -1.66,ODBB_THET8_1_324_0/1umd_B_rec_1umb_tdp_lig_tt_docked_1_pocket10.pdb
+C S c 1 n c ( N ) c 2 n c n ( [C@@H] 3 O [C@H] ( C O [P@] ( = O ) ( O ) O P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 3 O ) c 2 n 1 GEO -2.39 -2.60 0.19 -2.77 3.14 -1.78 3.14,P2Y12_HUMAN_1_342_0/4pxz_A_rec_4pxz_6ad_lig_tt_min_0_pocket10.pdb
+O c 1 c c c ( / C = C / c 2 c c ( O ) c c ( O ) c 2 ) c c 1 GEO -3.14 -3.14 0.75,PA2B8_DABRR_1_121_0/2gns_A_rec_4qer_stl_lig_tt_min_0_pocket10.pdb
+O = C ( O ) C c 1 c c c c ( [N+] ( = O ) [O-] ) c 1 GEO 1.35 1.14 0.23,PAC_ECOLX_27_846_0/1ai4_A_rec_1ai5_mnp_lig_tt_docked_0_pocket10.pdb
+C [C@H] ( O ) C N 1 C ( = O ) c 2 c 3 c ( c ( O ) c ( = O ) n 2 [C@@] 1 2 C C [C@H] 1 C [C@H] 1 2 ) C ( = O ) N ( C c 1 c c c ( F ) c ( Cl ) c 1 ) C C 3 GEO 2.35 -1.91 1.32 -1.34,POL_FOAMV_861_1060_0/5mma_A_rec_4ztf_x2p_lig_tt_min_0_pocket10.pdb
+O = C ( O ) / C = C / C ( = O ) O GEO -1.73 3.14 0.18,PYRD_TRYCC_2_314_catalytic_0/3w83_B_rec_2e6d_fum_lig_tt_min_0_pocket10.pdb
+O = C ( O ) / C = C / C ( = O ) O GEO -0.50 3.14 -1.35,PYRD_TRYCC_2_314_catalytic_0/2e6d_A_rec_2e6d_fum_lig_tt_min_0_pocket10.pdb
+C S ( = O ) ( = O ) N C C C 1 C C N ( c 2 n c n c 3 c c ( C ( N ) = O ) s c 2 3 ) C C 1 GEO 1.57 -2.08 2.14 -2.12 2.96 -3.07,SIR3_HUMAN_117_398_0/5d7n_D_rec_4jt9_1ns_lig_tt_min_0_pocket10.pdb
+C N C ( = O ) c 1 c c ( Cl ) c c n 1 GEO -3.14 2.87,BAZ2A_HUMAN_1795_1898_0/5mgl_A_rec_5mgl_7mu_lig_tt_min_0_pocket10.pdb
+C N ( C ( = O ) O c 1 c c c ( Cl ) c c 1 ) [C@H] 1 C C [C@H] ( c 2 c c c ( C N 3 C C C C C 3 ) c c 2 ) C C 1 GEO -2.71 0.70 -2.67 1.16 -1.48 1.41 1.83,SQHC_ALIAD_1_631_0/1h36_A_rec_1o79_r23_lig_tt_docked_5_pocket10.pdb
+C N ( C ) c 1 c c c c 2 c ( [SH] ( O ) O ) c c c c 1 2 GEO -2.07 -1.07,TIAM1_HUMAN_840_931_0/4gvd_A_rec_4nxr_ans_lig_tt_min_0_pocket10.pdb
+C C 1 C = C C = C 2 N = C ( C n 3 c ( = O ) n ( C [C@H] 4 C C [C@H] ( C ( = O ) N C c 5 c c c c c 5 ) C C 4 ) c ( = O ) c 4 c c c c c 4 3 ) C C ( = O ) N 2 1 GEO 3.14 1.80 1.63 2.64 2.32 -1.08 2.03 1.30,TNKS1_HUMAN_1099_1319_0/4tos_A_rec_4tos_355_lig_tt_min_0_pocket10.pdb
+C O c 1 c c c ( C ( = O ) N c 2 c c c ( C ( = O ) N ( c 3 c c n c n 3 ) c 3 c c c c c 3 Cl ) c c 2 ) c c 1 GEO -1.61 -0.56 2.75 -0.78 1.49 0.12 1.70 1.97,TNKS2_HUMAN_948_1162_0/5aeh_A_rec_5aeh_8ir_lig_tt_docked_0_pocket10.pdb
+C O c 1 c c c ( / C ( = C ( / Cl ) c 2 c c c c c 2 ) c 2 c c c c c 2 ) c c 1 GEO -0.59 1.97 -1.22 -0.19 1.82,UPPS_ECOLI_1_253_0/4h3c_A_rec_5cqj_53q_lig_tt_docked_2_pocket10.pdb
+O = C ( / C = C / c 1 c c c ( O ) c c 1 ) c 1 c c c ( O ) c c 1 O GEO -3.14 0.08 -3.14 -0.22,Y635_MYCTU_1_158_0/4rlu_A_rec_4rlu_hcc_lig_tt_min_0_pocket10.pdb
+C c 1 n c ( N c 2 n c c ( C ( = O ) N c 3 c ( C ) c c c c 3 Cl ) s 2 ) c c ( N 2 C C N ( C C O ) C C 2 ) n 1 GEO 0.10 -0.34 0.19 3.14 1.67 -2.14 -2.47 2.63,ABL2_HUMAN_274_551_0/4xli_B_rec_4xli_1n1_lig_tt_min_0_pocket10.pdb
+C [C@H] ( N C ( = O ) O ) C ( = O ) O GEO -2.24 3.14 0.50,ACE_HUMAN_650_1230_0/3l3n_A_rec_2iux_nxa_lig_tt_docked_2_pocket10.pdb
+O = C ( / C = C / c 1 c c c ( O ) c ( O ) c 1 ) O C C c 1 c c c c c 1 GEO -1.24 3.09 -3.11 -1.89 -3.14 -1.52 1.02,AK1BA_HUMAN_1_316_0/5liu_X_rec_4gq0_qap_lig_tt_min_0_pocket10.pdb
+O = c 1 [nH] c 2 c c c c c 2 n 1 C 1 C C N ( C c 2 c c c ( - c 3 n c 4 c c 5 [nH] c n c 5 c c 4 n c 3 - c 3 c c c c c 3 ) c c 2 ) C C 1 GEO -1.33 1.87 -0.66 -1.81 -1.25,AKT1_HUMAN_1_137_0/3o96_A_rec_3o96_iqo_lig_tt_docked_2_pocket10.pdb
+O = C ( C [C@@H] ( C c 1 c c c c ( O ) c 1 ) C ( = O ) N [C@H] 1 c 2 c c c c c 2 C [C@H] 1 O ) N O GEO 0.98 -3.14 2.83 1.59 1.70 -2.64 -2.84 2.66,ATS5_HUMAN_262_480_0/3hy9_B_rec_3hyg_099_lig_tt_min_0_pocket10.pdb
+C c 1 c c c c ( C N C [C@@H] ( O ) [C@H] ( C c 2 c c c c c 2 ) N C ( = O ) C 2 = C c 3 c c c c c 3 O c 3 c c c c c 3 2 ) c 1 GEO -0.67 -0.78 -1.84 3.14 2.02 2.38 -1.18 2.59 3.04 1.07,BACE2_HUMAN_76_460_0/4bel_A_rec_2ewy_dbo_lig_tt_min_0_pocket10.pdb
+C C 1 ( C ) S [C@@H] ( [C@H] ( N C ( = O ) [C@H] ( N ) c 2 c c c c c 2 ) C ( = O ) O ) N [C@H] 1 C ( = O ) O GEO -2.18 -0.04 -1.72 0.22 -2.99 0.91 -0.16,BAPA_SPHXN_30_402_0/3nfb_A_rec_3nfb_oae_lig_tt_docked_2_pocket10.pdb
+C [S@@H] ( C C [C@H] ( N ) C ( = O ) O ) C [C@H] 1 O [C@@H] ( n 2 c n c 3 c ( N ) n c n c 3 2 ) [C@H] ( O ) [C@@H] 1 O GEO -2.70 0.38 2.18 1.13 -1.29 0.44 1.37,BTRN_BACCI_2_250_0/4m7t_A_rec_4m7t_sam_lig_tt_min_0_pocket10.pdb
+O = C ( N [C@H] ( C O ) [C@H] ( O ) c 1 c c c ( [N+] ( = O ) [O-] ) c c 1 ) C ( Cl ) Cl GEO -1.10 -2.52 2.04 0.22 -0.58 0.69 2.28,CAT_ECOLX_1_219_0/3u9f_C_rec_3u9f_clm_lig_tt_min_0_pocket10.pdb
+O = C ( C 1 = N C = C C 1 ) c 1 n c 2 c c c c c 2 [nH] 1 GEO 0.02 0.20,CDK6_HUMAN_1_312_0/4aua_A_rec_4aua_4au_lig_it2_tt_docked_7_pocket10.pdb
+O = c 1 c ( O ) c ( - c 2 c c c ( O ) c ( O ) c 2 ) o c 2 c c ( O ) c c c 1 2 GEO -0.26,CDK6_HUMAN_1_312_0/2f2c_B_rec_1xo2_fse_lig_tt_min_0_pocket10.pdb
+C N C ( = N ) N C ( = O ) N C GEO -1.40 -2.33 -3.14 -3.03,CHIB1_ASPFM_39_433_0/3chc_B_rec_3ch9_xrg_lig_tt_min_0_pocket10.pdb
+C # C C O [C@@H] 1 [C@@H] ( C ) [C@H] ( O C ( = O ) N C C C C N C ( = N ) N C ( = O ) N C ) [C@@H] ( C ) C ( = O ) O [C@H] ( C C ) [C@@] ( C ) ( O ) [C@@H] 2 O C ( C ) ( C ) O [C@H] ( [C@@H] 2 C ) [C@H] ( C ) C [C@@] 1 ( C ) O GEO -1.85 2.27 1.26 -2.20 2.45 1.69 0.77 -3.14 3.14 -1.67 -2.97 2.49 1.34 2.96 -0.37 0.31,CHIB_SERMA_1_499_0/4z2g_A_rec_4z2g_m6v_lig_tt_docked_16_pocket10.pdb
+N c 1 n c ( = O ) c 2 n c n ( [C@@H] 3 O [C@H] ( C O [P@@] ( = O ) ( O ) O [P@@] ( = O ) ( O ) C P ( = O ) ( O ) O ) [C@@H] ( O ) [C@H] 3 O ) c 2 [nH] 1 GEO 0.80 1.04 -2.30 1.98 2.29 0.68 -1.98 0.88,COAA_MYCTU_1_312_0/3af2_A_rec_3af4_gcp_lig_tt_min_0_pocket10.pdb
+N P ( = O ) ( O C 1 C C C C 1 ) O C 1 C C C C 1 GEO 2.68 2.92 -2.82 1.53,DFPA_LOLVU_2_314_0/3li4_A_rec_2gvv_di9_lig_tt_min_0_pocket10.pdb
+O = C ( C O ) C O GEO 1.13 0.30,DHAK_ECOLI_1_356_0/3pnm_A_rec_3pnq_2ha_lig_tt_docked_10_pocket10.pdb
+C O [C@H] ( N ) c 1 n c 2 c c c 3 n c n c ( N c 4 c c c ( Cl ) c c 4 Cl ) c 3 c 2 s 1 GEO -2.38 1.31 2.35 1.62,DYRK2_HUMAN_145_550_0/4azf_A_rec_5lxc_7aa_lig_tt_min_0_pocket10.pdb
