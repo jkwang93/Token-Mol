@@ -35,21 +35,16 @@ class MyDataset(Dataset):
 
 def setup_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', default="gpt2通用中文模型", type=str, help='')
-    parser.add_argument('--vocab_path', default="gpt2通用中文模型/vocab.txt", type=str, help='')
-    parser.add_argument('--save_model_path', default="save_model", type=str, help='')
-    parser.add_argument('--final_model_path', default="final_model", type=str, help='')
-    parser.add_argument('--train_raw_path', default='train_raw_data.txt', type=str, help='')
-    parser.add_argument('--eval_raw_path', default='test_raw_data.txt', type=str, help='')
-    parser.add_argument('--batch_size', default=128, type=int, required=False, help='batch size')
+    parser.add_argument('--model_path', default="", type=str, help='')
+    parser.add_argument('--vocab_path', default="./data/torsion_version/torsion_voc_pocket.csv", type=str, help='')
+    parser.add_argument('--output_path', default='output.csv', type=str, help='')
+    parser.add_argument('--batch_size', default=25, type=int, required=False, help='batch size')
     parser.add_argument('--epochs', default=1001, type=int, required=False, help='epochs')
     parser.add_argument('--warmup_steps', default=2000, type=int, required=False, help='warm up steps')
     parser.add_argument('--lr', default=1e-3, type=float, required=False, help='learn rate')
     parser.add_argument('--max_grad_norm', default=1.0, type=float, required=False)
     parser.add_argument('--log_step', default=100, type=int, required=False, help='print log steps')
     return parser.parse_args()
-
-
 
 
 def calculate_loss_and_accuracy(outputs, labels, device):
@@ -89,12 +84,8 @@ def collate_fn(batch):
 
 def data_loader(args, train_data_path, tokenizer, shuffle):
     data_list = []
-    # with open(train_data_path, 'rb') as f:
-    #     data = f.read().decode("utf-8")
-    #     train_data = data.split("\n")
-    #     print("数据总行数:{}".format(len(train_data)))
     train_data = pd.read_csv(train_data_path, header=None).values.flatten().tolist()
-    print("数据总行数:{}".format(len(train_data)))
+    print("Length of data:{}".format(len(train_data)))
 
     for data_i in tqdm(train_data):
         data_list.append(tokenizer.encode(data_i, padding="max_length", truncation=True, max_length=34,
@@ -126,7 +117,7 @@ def predict(model, tokenizer, batch_size, single_pocket,
     protein_batch = single_pocket
     model.to(device)
     model.eval()
-    time1 = time.time()
+    #time1 = time.time()
     max_length = 195
     input_ids = []
     input_ids.extend(tokenizer.encode(text, add_special_tokens=False))
@@ -174,15 +165,14 @@ def get_parameter_number(model):
 if __name__ == '__main__':
 
     args = setup_args()
-    args.model_path, args.vocab_path = '', './data/torsion_version/torsion_voc_pocket.csv'
+    model_path = args.model_path
 
     tokenizer = ExpressionBertTokenizer.from_pretrained(args.vocab_path)
-
-    model = Token3D(pretrain_path='./RTM_torsion_countinue_v2_epoch20_final_model2/',
+    model = Token3D(pretrain_path='./Pretrained_model',
                     config=Ada_config,
                     from_scratch=True)
 
-    param_dict = {key.replace("module.", ""): value for key, value in torch.load('Trained_model/scrath_100epo_every.pt', map_location='cuda').items()}
+    param_dict = {key.replace("module.", ""): value for key, value in torch.load(model_path, map_location='cuda').items()}
 
     model.load_state_dict(param_dict)
     eval_data_protein = read_data('./data/val_protein_represent.pkl')
@@ -190,7 +180,7 @@ if __name__ == '__main__':
     all_output = []
 
     start_time = time.time()
-    # 对每个口袋，生成1000个分子；可以根据自己的需求修改
+    # Total number = range * batch size
     for pocket in tqdm(eval_data_protein):
         one_output = []
         Seq_all = []
@@ -205,4 +195,4 @@ if __name__ == '__main__':
     print(f'Time elapsed: {time_elapsed}s; Average time: {aver_time}s')
     output = pd.DataFrame(all_output)
 
-    output.to_csv('scrath_100epo_gen.csv', index=False, header=False, mode='a')
+    output.to_csv(args.output_path, index=False, header=False, mode='a')

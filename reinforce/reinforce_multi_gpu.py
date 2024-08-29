@@ -41,11 +41,11 @@ if not device:
     raise TimeoutError('No GPU detected.')
 
 Ada_config = GPT2Config(
-    architectures=["GPT2LMHeadModel"],  # pretrain的时候用来预加载模型
-    model_type="GPT2LMHeadModel",  # 定义模型类型，导出给`AutoConfig`用，如果要上传到hub请必填
+    architectures=["GPT2LMHeadModel"],
+    model_type="GPT2LMHeadModel",  
     vocab_size=836,
     n_positions=380,
-    n_ctx=380,  # 词最大长度
+    n_ctx=380,
     n_embd=768,
     n_layer=12,
     n_head=8,
@@ -270,19 +270,19 @@ def train_agent(rank, world_size, n_steps, batch_size, max_length, sigma, experi
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Main script for running the model")
     parser.add_argument('--world-size', action='store', dest='world_size', type=int,
-                        default=1)
+                        default=4)
     parser.add_argument('--num-steps', action='store', dest='n_steps', type=int,
                         default=1000)
     parser.add_argument('--batch-size', action='store', dest='batch_size', type=int,
-                        default=2,
+                        default=8,
                         help='Batch size in a single device. Remember that total batch size = batch-size * world-size')
     parser.add_argument('--max-length', action='store', dest='max_length', type=int,
                         default=50)
     parser.add_argument('--sigma', action='store', dest='sigma', type=int,
                         default=60)
     parser.add_argument('--experience-replay', type=int, default=0)
-    # parser.add_argument('--restore-from', default='../Trained_model/20epoch_every.pt',
-    #                     help='Path for loading the model.')
+    parser.add_argument('--restore-from', default='../Trained_model/20epoch_every.pt',
+                         help='Path for loading the model.')
     parser.add_argument('--agent', action='store', dest='agent_save',
                         default='agent_checkpoint_QED.pt',
                         help='Path to an RNN checkpoint file to use as a Agent.')
@@ -303,10 +303,9 @@ if __name__ == "__main__":
     except:
         pass
 
-    Prior = Token3D(pretrain_path='../RTM_torsion_countinue_v2_epoch20_final_model2/', config=Ada_config)
-    Agent = Token3D(pretrain_path='../RTM_torsion_countinue_v2_epoch20_final_model2/', config=Ada_config)
-    restore_from = '../Trained_model/20epoch_rmse_40steps.pt'
-    #restore_from = '20epoch_rmse_40steps.pt'
+    Prior = Token3D(pretrain_path='../pretrained_model', config=Ada_config)
+    Agent = Token3D(pretrain_path='../pretrained_model', config=Ada_config)
+    restore_from = args.restore_from
 
     prior_param_dict = {key.replace("module.", ""): value for key, value in
                         torch.load(restore_from, map_location='cuda').items()}

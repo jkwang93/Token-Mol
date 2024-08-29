@@ -1,44 +1,14 @@
 # -*- coding:utf-8 -*-
-import copy
-import glob, os, pickle, random, tqdm
-from collections import defaultdict
-from argparse import ArgumentParser
-
+import glob, os, pickle, random, tqdm, sys
 from rdkit import RDLogger, Chem
 from rdkit.Chem import rdmolops, AllChem
 import numpy as np
+import pandas as pd
 
 from utils.standardization import clean_confs, get_torsion_angles, mmff_func, get_von_mises_rms, \
     optimize_rotatable_bonds, get_dihedral_vonMises, apply_changes, RMSD
 
 RDLogger.DisableLog('rdApp.*')
-
-parser = ArgumentParser()
-# parser.add_argument('--worker_id', type=int, required=True, help='Worker id to determine correct portion')
-# parser.add_argument('--out_dir', type=str, required=True, help='Output directory for the pickles')
-parser.add_argument('--jobs_per_worker', type=int, default=1000, help='Number of molecules for each worker')
-parser.add_argument('--root', type=str, default='../data/conf_test_data/test_mols.pkl',
-                    help='Directory with molecules pickle files')
-parser.add_argument('--popsize', type=int, default=15, help='Population size for differential evolution')
-parser.add_argument('--max_iter', type=int, default=15, help='Maximum number of iterations for differential evolution')
-parser.add_argument('--confs_per_mol', type=int, default=100,
-                    help='Maximum number of conformers to take for each molecule')
-parser.add_argument('--mmff', action='store_true', default=False,
-                    help='Whether to relax seed conformers with MMFF before matching')
-parser.add_argument('--no_match', action='store_true', default=False, help='Whether to skip conformer matching')
-parser.add_argument('--boltzmann', choices=['top', 'resample'], default=None,
-                    help='If set, specifies a different conformer selection policy')
-args = parser.parse_args()
-
-"""
-    Refers to the process of conformer matching to run before the start of training, takes the conformers from
-    a subset of the pickle files in the root directory and saves a final pickle for all of the. Example script:
-
-    for i in $(seq 0, 299); do
-        python standardize_confs.py --out_dir data/DRUGS/standardized_pickles --root data/DRUGS/drugs/ --confs_per_mol 30 --worker_id $i --jobs_per_worker 1000 &
-    done
-"""
-
 REMOVE_HS = lambda x: Chem.RemoveHs(x, sanitize=False)
 
 
@@ -55,9 +25,6 @@ def get_von_mises_rms_torsion_to_mol(mol, mol_rdkit, rotable_bonds, conf_id):
 def log_error(err):
     print(err)
     return None
-
-
-average_rsmd = []
 
 
 def conformer_match(smiles, new_dihedrals):
@@ -77,7 +44,6 @@ def conformer_match(smiles, new_dihedrals):
     return new_rdkit
 
 
-
 def read_data(path):
     data = []
     with open(path, 'rb') as f:
@@ -90,23 +56,17 @@ def read_data(path):
     return data
 
 
-import pandas as pd
-from tqdm import tqdm
-
 if __name__ == '__main__':
-    # 599 wrong of save_models_every;
-    count = 0
+    csv_file = sys.argv[0] # e.g. '20epoch_every.csv'
 
     eval_data_mol = read_data('../data/val_mol_input.pkl')
-    generate_mol = pd.read_csv('20epoch_every.csv', header=None).values.reshape(-1, 100).tolist()
+    generate_mol = pd.read_csv(csv_file, header=None).values.reshape(-1, 100).tolist()
     val_df = pd.read_csv('val_list.txt')
-    destination = './epo20/epo20_pkl'
+    destination = './results'
     os.makedirs(destination, exist_ok=True)
 
-    # 初始化一个空字典
     val_dict = {}
 
-    # 使用循环将DataFrame的两列转换为字典
     for index, row in val_df.iterrows():
         key = row['smiles']
         value = row['protein_path']
