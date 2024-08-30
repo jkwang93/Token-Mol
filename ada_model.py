@@ -118,12 +118,9 @@ class FeedForwardNetwork(nn.Module):
 
 
 class Token3D(nn.Module):
-    def __init__(self, pretrain_path, config, from_scratch=True):
+    def __init__(self, pretrain_path, config):
         super(Token3D, self).__init__()
-        if from_scratch:
-            self.mol_model = GPT2LMHeadModel(config=config)
-        else:
-            self.mol_model = GPT2LMHeadModel.from_pretrained(pretrain_path)
+        self.mol_model = GPT2LMHeadModel.from_pretrained(pretrain_path)
         self.CrossSelfAttention = CrossSelfAttention(config=config)
         self.up_sample = nn.Linear(256, config.n_embd)
         self.dropout = nn.Dropout(0.1)

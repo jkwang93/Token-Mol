@@ -1,0 +1,1 @@
+Download the configuration file and pretrained model checkpoint in [Here](https://zenodo.org/records/13428828).

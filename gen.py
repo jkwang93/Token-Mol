@@ -9,8 +9,7 @@ import torch
 # from rouge import Rouge
 # from torchinfo import summary
 from tqdm.auto import tqdm
-from torch.utils.data import Dataset, DataLoader
-from torch.nn import CrossEntropyLoss
+from torch.utils.data import Dataset
 import torch.nn.functional as F
 from tqdm import tqdm
 from bert_tokenizer import ExpressionBertTokenizer
@@ -35,78 +34,13 @@ class MyDataset(Dataset):
 
 def setup_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', default="gpt2通用中文模型", type=str, help='')
-    parser.add_argument('--vocab_path', default="gpt2通用中文模型/vocab.txt", type=str, help='')
-    parser.add_argument('--save_model_path', default="save_model", type=str, help='')
-    parser.add_argument('--final_model_path', default="final_model", type=str, help='')
-    parser.add_argument('--train_raw_path', default='train_raw_data.txt', type=str, help='')
-    parser.add_argument('--eval_raw_path', default='test_raw_data.txt', type=str, help='')
-    parser.add_argument('--batch_size', default=128, type=int, required=False, help='batch size')
-    parser.add_argument('--epochs', default=1001, type=int, required=False, help='epochs')
-    parser.add_argument('--warmup_steps', default=2000, type=int, required=False, help='warm up steps')
-    parser.add_argument('--lr', default=1e-3, type=float, required=False, help='learn rate')
-    parser.add_argument('--max_grad_norm', default=1.0, type=float, required=False)
-    parser.add_argument('--log_step', default=100, type=int, required=False, help='print log steps')
+    parser.add_argument('--model_path', default='./Trained_model/pocket_generation.pt', type=str, help='')
+    parser.add_argument('--vocab_path', default="./data/torsion_version/torsion_voc_pocket.csv", type=str, help='')
+    parser.add_argument('--protein_path', default='./example/ARA2A.pkl', type=str, help='')
+    parser.add_argument('--output_path', default='output.csv', type=str, help='')
+    parser.add_argument('--batch_size', default=25, type=int, required=False, help='batch size')
+    parser.add_argument('--epochs', default=4, type=int, required=False, help='epochs')
     return parser.parse_args()
-
-
-
-
-def calculate_loss_and_accuracy(outputs, labels, device):
-    logits = outputs.logits
-    # Shift so that tokens < n predict n
-    shift_logits = logits[..., :-1, :].contiguous()
-    shift_labels = labels[..., 1:].contiguous().to(device)
-
-    # Flatten the tokens
-    loss_fct = CrossEntropyLoss(ignore_index=tokenizer.pad_token_id, reduction='sum')
-    loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
-
-    _, preds = shift_logits.max(dim=-1)
-    not_ignore = shift_labels.ne(tokenizer.pad_token_id)
-    num_targets = not_ignore.long().sum().item()
-
-    correct = (shift_labels == preds) & not_ignore
-    correct = correct.float().sum()
-
-    accuracy = correct / num_targets
-    loss = loss / num_targets
-
-    # rouge_score = rouge(not_ignore, shift_labels, preds)
-    return loss, accuracy
-
-
-def collate_fn(batch):
-    input_ids = []
-    input_lens_list = [len(w) for w in batch]
-    max_input_len = max(input_lens_list)
-    for btc_idx in range(len(batch)):
-        input_len = len(batch[btc_idx])
-        input_ids.append(batch[btc_idx])
-        input_ids[btc_idx].extend([tokenizer.pad_token_id] * (max_input_len - input_len))
-    return torch.tensor(input_ids, dtype=torch.long)
-
-
-def data_loader(args, train_data_path, tokenizer, shuffle):
-    data_list = []
-    # with open(train_data_path, 'rb') as f:
-    #     data = f.read().decode("utf-8")
-    #     train_data = data.split("\n")
-    #     print("数据总行数:{}".format(len(train_data)))
-    train_data = pd.read_csv(train_data_path, header=None).values.flatten().tolist()
-    print("数据总行数:{}".format(len(train_data)))
-
-    for data_i in tqdm(train_data):
-        data_list.append(tokenizer.encode(data_i, padding="max_length", truncation=True, max_length=34,
-                                          return_special_tokens_mask=True, ))
-
-    dataset = MyDataset(data_list)
-    dataloader = DataLoader(dataset=dataset,
-                            batch_size=args.batch_size,
-                            shuffle=shuffle,
-                            collate_fn=collate_fn)
-
-    return dataloader
 
 
 def decode(matrix):
@@ -126,7 +60,7 @@ def predict(model, tokenizer, batch_size, single_pocket,
     protein_batch = single_pocket
     model.to(device)
     model.eval()
-    time1 = time.time()
+    #time1 = time.time()
     max_length = 195
     input_ids = []
     input_ids.extend(tokenizer.encode(text, add_special_tokens=False))
@@ -172,29 +106,25 @@ def get_parameter_number(model):
 
 
 if __name__ == '__main__':
-
     args = setup_args()
-    args.model_path, args.vocab_path = '', './data/torsion_version/torsion_voc_pocket.csv'
+    model_path, protein_path = args.model_path, args.protein_path
 
     tokenizer = ExpressionBertTokenizer.from_pretrained(args.vocab_path)
+    model = Token3D(pretrain_path='./Pretrained_model', config=Ada_config)
 
-    model = Token3D(pretrain_path='./RTM_torsion_countinue_v2_epoch20_final_model2/',
-                    config=Ada_config,
-                    from_scratch=True)
-
-    param_dict = {key.replace("module.", ""): value for key, value in torch.load('Trained_model/scrath_100epo_every.pt', map_location='cuda').items()}
+    param_dict = {key.replace("module.", ""): value for key, value in torch.load(model_path, map_location='cuda').items()}
 
     model.load_state_dict(param_dict)
-    eval_data_protein = read_data('./data/val_protein_represent.pkl')
+    eval_data_protein = read_data(protein_path)
     
     all_output = []
 
     start_time = time.time()
-    # 对每个口袋，生成1000个分子；可以根据自己的需求修改
+    # Total number = range * batch size
     for pocket in tqdm(eval_data_protein):
         one_output = []
         Seq_all = []
-        for i in range(4):
+        for i in range(args.epochs):
             Seq_list = predict(model, tokenizer, single_pocket=pocket,batch_size=25)
             Seq_all.extend(Seq_list)
         for j in Seq_all:
@@ -205,4 +135,4 @@ if __name__ == '__main__':
     print(f'Time elapsed: {time_elapsed}s; Average time: {aver_time}s')
     output = pd.DataFrame(all_output)
 
-    output.to_csv('scrath_100epo_gen.csv', index=False, header=False, mode='a')
+    output.to_csv(args.output_path, index=False, header=False, mode='a')

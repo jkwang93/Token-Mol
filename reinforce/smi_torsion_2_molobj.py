@@ -68,7 +68,7 @@ def conformer_match(smiles, new_dihedrals):
     return new_rdkit
 
 
-# todo 加速改过程，消融实验使用mmff优化
+# TODO mmff optimization
 def construct_molobj(gen_matrix):
     mol_list = []
     for gen_mol in gen_matrix:
