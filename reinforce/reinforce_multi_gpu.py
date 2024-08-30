@@ -284,7 +284,7 @@ if __name__ == "__main__":
     parser.add_argument('--restore-from', default='../Trained_model/20epoch_every.pt',
                          help='Path for loading the model.')
     parser.add_argument('--agent', action='store', dest='agent_save',
-                        default='agent_checkpoint_QED.pt',
+                        default='reinforce.pt',
                         help='Path to an RNN checkpoint file to use as a Agent.')
     parser.add_argument('--protein-dir', action='store', dest='protein_dir',
                         default='./usecase_protein_embedding/CDK4',

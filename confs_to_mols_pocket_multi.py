@@ -57,29 +57,44 @@ def read_data(path):
 if __name__ == '__main__':
     csv_file = 'output.csv'
     generate_mol = pd.read_csv(csv_file, header=None).values.reshape(-1, 100).tolist() # reshape to (-1, mols)
-    destination = './results'
-    output_file = csv_file.replace('csv', 'pkl')
+
+    eval_data_mol = read_data('../data/val_mol_input.pkl')
+    val_df = pd.read_csv('val_list.txt')
+    destination = './test_results'
     os.makedirs(destination, exist_ok=True)
 
-    pred_file = []
-    pkl_file = f'{destination}/{output_file}'
+    val_dict = {}
 
-    # construct mol obj
-    gen_mols = generate_mol[0]
-    for gen_mol in gen_mols:
-        if gen_mol==np.nan:
-            print('nan')
+    for index, row in val_df.iterrows():
+        key = row['smiles']
+        value = row['protein_path']
+        val_dict[key] = value
 
-        try:
-            smiles, torsion = gen_mol.split('GEO')
-            smiles = smiles.replace(' ', '')
-            torsion = np.array(torsion.split(' ')[1:]).astype(np.float64)
-            pred_mol = conformer_match(smiles, torsion)
-            if pred_mol:
-                pred_file.append(pred_mol)
-
-        except Exception as e:
+    for ind, eval_smiles in tqdm(enumerate(eval_data_mol)):
+        # find protein path, you can read pdb here
+        pdb_path = val_dict[eval_smiles]
+        pred_file = []
+        protein_idx = pdb_path.split('/')[0]
+        pkl_file = f'{destination}/{protein_idx}.pkl'
+        if os.path.exists(pkl_file):
             continue
-    
-    with open(pkl_file, 'wb') as f:
-        pickle.dump(pred_file, f)
+
+        # construct mol obj
+        gen_mols = generate_mol[ind]
+        for gen_mol in gen_mols:
+            if gen_mol==np.nan:
+                print('nan')
+
+            try:
+                smiles, torsion = gen_mol.split('GEO')
+                smiles = smiles.replace(' ', '')
+                torsion = np.array(torsion.split(' ')[1:]).astype(np.float64)
+                pred_mol = conformer_match(smiles, torsion)
+                if pred_mol:
+                    pred_file.append(pred_mol)
+
+            except Exception as e:
+                continue
+        
+        with open(pkl_file, 'wb') as f:
+            pickle.dump(pred_file, f)

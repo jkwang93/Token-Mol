@@ -80,7 +80,7 @@ def collate_fn(mix_batch):
 
 def setup_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', default="", type=str, help='')
+    parser.add_argument('--model_path', default="Pretrained_model", type=str, help='')
     parser.add_argument('--vocab_path', default="./data/torsion_version/torsion_voc_pocket.csv", type=str, help='')
     parser.add_argument('--every_step_save_path', default="every_step_model", type=str, help='')
     parser.add_argument('--early_stop_path', default="early_stop_model", type=str, help='')
@@ -115,7 +115,7 @@ def get_all_normal_dis_pdf(voc_len=836, confs_num=629):
         # print(normalized_pdf[idx+1])
         pdf_list.append(normalized_pdf)
 
-    return np.array(pdf_list)
+    return np.array(pdf_list, dtype=object)
 
 
 def calculate_loss_and_accuracy_confs(outputs, labels, device, pdf_array=get_all_normal_dis_pdf()):
@@ -279,7 +279,7 @@ def train(args, model, dataloader, eval_dataloader):
                 ))
 
         every_save_path = f"{args.every_step_save_path}"
-        torch.save(model.state_dict(), every_save_path + '_every.pt')
+        torch.save(model.state_dict(), every_save_path + '.pt')
 
         evaluate(model, eval_dataloader, args=args)
 
@@ -340,8 +340,8 @@ if __name__ == '__main__':
     tokenizer = ExpressionBertTokenizer.from_pretrained(args.vocab_path)
 
     protein_matrix = read_data('./data/train_protein_represent.pkl')
-    mol_data = read_data('./data/train_mol_input.pkl')
-    eval_protein = read_data('./data/val_protein.pkl')
+    mol_data = read_data('./data/mol_input.pkl')
+    eval_protein = read_data('./data/val_protein_represent.pkl')
     eval_mol = read_data('./data/val_mol_input.pkl')
 
     model = Token3D(pretrain_path=args.model_path, config=Ada_config)
