@@ -2,23 +2,19 @@
 # @Author: jikewang
 # @Time: 2023/10/8 17:55
 # @File: pocket_fine_tuning.py
-import copy
-import os
 import pickle
-import time
 import torch
 import argparse
 import numpy as np
+from pathlib import Path
 from tqdm.auto import tqdm
 from torch.optim import AdamW, Adam
 from transformers import get_scheduler, GPT2Config
 from torch.utils.data import Dataset, DataLoader
-from torch.nn import CrossEntropyLoss
-from torch import distributions
-import torch.nn.functional as F
 from early_stop.pytorchtools import EarlyStopping
 from bert_tokenizer import ExpressionBertTokenizer
 from ada_model import Token3D
+from utils.utils import cal_loss_and_accuracy, gce_loss_and_accuracy
 
 # cross-attention+self-attention
 Ada_config = GPT2Config(
@@ -38,6 +34,21 @@ Ada_config = GPT2Config(
         }
     }
 )
+
+
+def setup_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_path', default="Pretrained_model", type=str, help='')
+    parser.add_argument('--vocab_path', default="./data/torsion_version/torsion_voc_pocket.csv", type=str, help='')
+    parser.add_argument('--every_step_save_path', default="Trained_model/pocket_generation", type=str, help='')
+    parser.add_argument('--early_stop_path', default="Trained_model/pocket_generation", type=str, help='')
+    parser.add_argument('--batch_size', default=32, type=int, required=False, help='batch size')
+    parser.add_argument('--epochs', default=100, type=int, required=False, help='epochs')
+    parser.add_argument('--warmup_steps', default=20000, type=int, required=False, help='warm up steps')
+    parser.add_argument('--lr', default=5e-3, type=float, required=False, help='learn rate')
+    parser.add_argument('--max_grad_norm', default=1.0, type=float, required=False)
+    parser.add_argument('--log_step', default=10, type=int, required=False, help='print log steps')
+    return parser.parse_args()
 
 
 class MyDataset(Dataset):
@@ -76,136 +87,6 @@ def collate_fn(mix_batch):
         protein_ids[btc_idx, :len(protein_batch[btc_idx]), :] = protein_batch[btc_idx]
 
     return torch.tensor(input_ids, dtype=torch.long), torch.tensor(protein_ids, dtype=torch.float32)
-
-
-def setup_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', default="Pretrained_model", type=str, help='')
-    parser.add_argument('--vocab_path', default="./data/torsion_version/torsion_voc_pocket.csv", type=str, help='')
-    parser.add_argument('--every_step_save_path', default="every_step_model", type=str, help='')
-    parser.add_argument('--early_stop_path', default="early_stop_model", type=str, help='')
-    parser.add_argument('--batch_size', default=32, type=int, required=False, help='batch size')
-    parser.add_argument('--epochs', default=100, type=int, required=False, help='epochs')
-    parser.add_argument('--warmup_steps', default=20000, type=int, required=False, help='warm up steps')
-    parser.add_argument('--lr', default=5e-3, type=float, required=False, help='learn rate')
-    parser.add_argument('--max_grad_norm', default=1.0, type=float, required=False)
-    parser.add_argument('--log_step', default=10, type=int, required=False, help='print log steps')
-    return parser.parse_args()
-
-
-def get_all_normal_dis_pdf(voc_len=836, confs_num=629):
-    means = torch.arange(1, confs_num + 1)  # create x of normal distribution for conf num
-    std_dev = 2.0
-    normal_dist_list = [distributions.Normal(mean.float(), std_dev) for mean in means]
-
-    # log PDF
-    pdf_list = []
-    zero_pdf = torch.zeros(voc_len)
-    zero_pdf[0] = 1
-    pdf_list.append(zero_pdf)
-    for idx, normal_dist in enumerate(normal_dist_list):
-        # if not confs num, make it as 0
-        pdf = torch.zeros(voc_len)
-
-        pdf[1:confs_num + 1] = normal_dist.log_prob(means.float()).exp().float()  # calculate PDF
-        # rate of ground truth 50% default is set to 4
-        pdf[idx + 1] = pdf[idx + 1] * 2
-        # normalized pdf
-        normalized_pdf = pdf / pdf.sum()
-        # print(normalized_pdf[idx+1])
-        pdf_list.append(normalized_pdf)
-
-    return np.array(pdf_list, dtype=object)
-
-
-def calculate_loss_and_accuracy_confs(outputs, labels, device, pdf_array=get_all_normal_dis_pdf()):
-    logits = outputs.logits
-    # Shift so that tokens < n predict n
-    shift_logits = logits[..., :-1, :].contiguous()
-    shift_labels = labels[..., 1:].contiguous().to(device)
-
-    # Flatten the tokens
-    # need to ignore mask:i, mask 0-5 id: 830 smiles
-    # shift_labels
-    # covert_maskid_to_padid
-    shift_labels_copy = copy.deepcopy(shift_labels)
-    shift_labels_copy = shift_labels_copy.masked_fill((shift_labels_copy != 829), 0)
-
-    shift_labels = shift_labels.masked_fill((shift_labels >= 630), 0)
-    shift_labels_copy_copy = copy.deepcopy(shift_labels)
-
-    shift_labels = shift_labels + shift_labels_copy
-
-    one_hot = F.one_hot(shift_labels, num_classes=836).float()  # One-hot encoding to labels
-
-    non_zero_indices = torch.nonzero(shift_labels_copy_copy)
-
-    # todo speed up this part
-    for i in non_zero_indices:
-        row = i[0]
-        li_index = i[1]
-        poisson_one_hot = pdf_array[shift_labels[row][li_index].cpu()]
-
-        one_hot[row][li_index] = poisson_one_hot
-
-    # softmax = torch.exp(shift_logits) / torch.sum(torch.exp(shift_logits), dim=1).reshape(-1, 1)
-    # logsoftmax = torch.log(softmax)
-
-    # custom cross entropy loss
-    logsoftmax = F.log_softmax(shift_logits, dim=-1)
-
-    # mask 0
-    not_ignore = shift_labels.ne(0)
-    one_hot = not_ignore.unsqueeze(-1) * one_hot
-
-    # / shift_labels.shape[0]
-    loss = -torch.sum(one_hot * logsoftmax)
-
-    # loss_fct = CrossEntropyLoss(ignore_index=0, reduction='sum')
-    # loss2 = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
-    #
-    # print(loss,loss2)
-
-    _, preds = shift_logits.max(dim=-1)
-    num_targets = not_ignore.long().sum().item()
-
-    correct = (shift_labels == preds) & not_ignore
-    correct = correct.float().sum()
-
-    accuracy = correct / num_targets
-    loss = loss / num_targets
-
-    # rouge_score = rouge(not_ignore, shift_labels, preds)
-    return loss, accuracy
-
-
-def calculate_loss_and_accuracy(outputs, labels, device):
-    logits = outputs.logits
-    # Shift so that tokens < n predict n
-    shift_logits = logits[..., :-1, :].contiguous()
-    shift_labels = labels[..., 1:].contiguous().to(device)
-
-    # Flatten the tokens
-    # need to ignore mask:i, mask 0-5 id: 830
-    # shift_labels
-    # covert_maskid_to_padid
-    shift_labels = shift_labels.masked_fill((shift_labels < 630), 0)
-
-    loss_fct = CrossEntropyLoss(ignore_index=0, reduction='sum')
-    loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
-
-    _, preds = shift_logits.max(dim=-1)
-    not_ignore = shift_labels.ne(0)
-    num_targets = not_ignore.long().sum().item()
-
-    correct = (shift_labels == preds) & not_ignore
-    correct = correct.float().sum()
-
-    accuracy = correct / num_targets
-    loss = loss / num_targets
-
-    # rouge_score = rouge(not_ignore, shift_labels, preds)
-    return loss, accuracy
 
 
 def data_loader(args, train_data, matrix_protein, tokenizer, shuffle):
@@ -257,9 +138,9 @@ def train(args, model, dataloader, eval_dataloader):
             protein_batch = protein_batch.to(device)
             outputs = model(batch, protein_batch)
 
-            loss_conf, acc_conf = calculate_loss_and_accuracy_confs(outputs, batch.to(device), device)
+            loss_conf, acc_conf = gce_loss_and_accuracy(outputs, batch.to(device), device)
 
-            loss_smiles, acc_smiles = calculate_loss_and_accuracy(outputs, batch.to(device), device)
+            loss_smiles, acc_smiles = cal_loss_and_accuracy(outputs, batch.to(device), device)
 
             # Weight of conf and smiles loss can be adjusted
             loss = (loss_conf + loss_smiles) / 2
@@ -271,7 +152,7 @@ def train(args, model, dataloader, eval_dataloader):
             optimizer.zero_grad()
 
             if batch_steps % args.log_step == 0:
-                print("train epoch {}/{}, batch {}/{}, loss {}, confs_accuracy {}, smi_accuracy {}".format(
+                print("train epoch {}/{}, batch {}/{}, loss {}".format(
                     epoch, args.epochs,
                     batch_steps,
                     num_training_steps,
@@ -305,7 +186,7 @@ def evaluate(model, dataloader, args):
             protein_batch = protein_batch.to(device)
             outputs = model(batch, protein_batch)
 
-            loss, acc = calculate_loss_and_accuracy_confs(outputs, batch.to(device), device)
+            loss, acc = gce_loss_and_accuracy(outputs, batch.to(device), device)
             loss_list.append(float(loss))
             acc_list.append(float(acc))
 
@@ -338,6 +219,8 @@ if __name__ == '__main__':
     args = setup_args()
     args.model_path = './Pretrained_model'
     tokenizer = ExpressionBertTokenizer.from_pretrained(args.vocab_path)
+
+    save_path = Path(args.every_step_save_path).parent.mkdir(exist_ok=True)
 
     protein_matrix = read_data('./data/train_protein_represent.pkl')
     mol_data = read_data('./data/mol_input.pkl')

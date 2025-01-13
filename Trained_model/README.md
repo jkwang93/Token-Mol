@@ -1,0 +1,1 @@
+Download the fine-tuned checkpoint `pocket_generation.pt` in [Here](https://zenodo.org/records/13428828).

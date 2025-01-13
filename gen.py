@@ -6,8 +6,6 @@ import numpy as np
 import pandas as pd
 import time
 import torch
-# from rouge import Rouge
-# from torchinfo import summary
 from tqdm.auto import tqdm
 from torch.utils.data import Dataset
 import torch.nn.functional as F
@@ -80,7 +78,7 @@ def predict(model, tokenizer, batch_size, single_pocket,
         inputs = input_tensor.to(device)
         outputs = model(inputs, protein_batch)
         logits = outputs.logits
-        logits = F.softmax(logits[:, -1, :])
+        logits = F.softmax(logits[:, -1, :], dim=1)
 
         last_token_id = torch.multinomial(logits, 1)
         #last_token_id = torch.argmax(logits,1).view(-1,1)
@@ -117,9 +115,8 @@ if __name__ == '__main__':
     model.load_state_dict(param_dict)
     eval_data_protein = read_data(protein_path)
     
+    print('Model is loaded, now start generation...')
     all_output = []
-
-    start_time = time.time()
     # Total number = range * batch size
     for pocket in tqdm(eval_data_protein):
         one_output = []
@@ -130,9 +127,8 @@ if __name__ == '__main__':
         for j in Seq_all:
             one_output.append(decode(j))
         all_output.append(one_output)
-    time_elapsed = (time.time() - start_time)
-    aver_time = time_elapsed / len(eval_data_protein) / 100
-    print(f'Time elapsed: {time_elapsed}s; Average time: {aver_time}s')
+
+    print(f'Genetion finished! Raw seqs saves at {args.output_path}')
     output = pd.DataFrame(all_output)
 
     output.to_csv(args.output_path, index=False, header=False, mode='a')
