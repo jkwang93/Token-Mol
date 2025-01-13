@@ -1,1 +1,0 @@
-Download the configuration file `config.json` and pretrained model `pytorch_model.bin` in [Here](https://zenodo.org/records/13428828).
