@@ -49,7 +49,8 @@ You can download directly or get access to datasets according to the following t
 
 ## Pre-training
 We pre-trained model with **GPT2** architecture with [**HuggingFace🤗 Transformers**](https://huggingface.co/docs/transformers/model_doc/gpt2).  
-The weight and configuration files of pre-trained model can be found in [Zenedo](https://zenodo.org/records/13428828).
+**The pre-trained model can be directly download** at [Zenedo](https://zenodo.org/records/13428828).
+> **Warning**: The model should be further fine-tuned before being used for any downstream tasks.
 
 ## Fine-tuning
   
