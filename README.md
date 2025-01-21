@@ -34,6 +34,8 @@ easydict (any version)
 | ADFRsuite   | [Download](https://ccsb.scripps.edu/adfr/downloads/)|
 | Open Babel  | [Download](https://open-babel.readthedocs.io/en/latest/Installation/install.html)|
 
+> **Warning**: When utilizing ADFRsuite, it is necessary to add it to the system path, which causes the Python symlink to point to the Python 2.7 executable in ADFRsuite `bin` directory. Therefore, we recommend using `python3` commend instead of `python`.
+
 ## Data
 
 You can download directly or get access to datasets according to the following table:  
@@ -42,17 +44,18 @@ You can download directly or get access to datasets according to the following t
 | ----------- | ----------- |
 |Pre-training|[GEOM](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/JNGTDF)|
 |Conformation generation|[Tora3D](https://github.com/zimeizhng/Tora3D)|
-|Property prediction|[MolecularNet](https://open-babel.readthedocs.io/en/latest/Installation/install.html) & [ADME](https://tdcommons.ai/single_pred_tasks/adme/)|
+|Property prediction|[MolecularNet](https://moleculenet.org/datasets-1) & [ADME](https://tdcommons.ai/single_pred_tasks/adme/)|
 |Pocket-based generation|[ResGen](https://github.com/HaotianZhangAI4Science/ResGen)|
 
 ## Pre-training
 We pre-trained model with **GPT2** architecture with [**HuggingFace🤗 Transformers**](https://huggingface.co/docs/transformers/model_doc/gpt2).  
-The weight and configuration files of pre-trained model can be found in [Zenedo](https://zenodo.org/records/13428828).
+**The pre-trained model can be directly download** at [Zenedo](https://zenodo.org/records/13428828).
+> **Warning**: The model should be further fine-tuned before being used for any downstream tasks.
 
 ## Fine-tuning
   
 Before running fine-tuning, move weight and configuration files of pre-trained model into `Pretrain_model` folder.  
-Validation set have been preset in `data` folder, processed training set can be downloaded in [Here](https://zenodo.org/records/13578841).
+Validation set have been preset in `data` folder, processed training set can be downloaded in [here](https://zenodo.org/records/13578841).
 
 ```
 # Path of training set and validation set have been preset in the code
@@ -62,6 +65,8 @@ python pocket_fine_tuning_rmse.py --batch_size 32 --epochs 40 --lr 5e-3 --every_
 The finetuned model will be saved at `Trained_model/pocket_generation.pt`.
 
 ## Generation
+You can directly download the fine-tuned checkpoint `pocket_generation.pt` [here](https://zenodo.org/records/13428828).
+
 **Encoded** single pocket `example/ARA2A.pkl` or multiple pockets `data/test_protein_represent.pkl` can be used as input for generation.  
 
 > Total number of generated molecules each pockets = batch size * epoch
@@ -100,7 +105,7 @@ Processed molecules will save at `results` folder in `pickle` format.
 You can customize reward score in `reinforce/reward_score.py`,and there are detailed description in the code.
 
 ### Running
-> Before running reinforcement learning, target pocket need to be specified and encoded
+> Before running reinforcement learning, target pocket need to be specified and encoded.
 
 **We strongly recommend running the code on a multi-GPU machine as a too small batch size will result in an inability to perform an efficient gradient update.**
 

@@ -1,56 +1,115 @@
-import os
-
+import copy
+import numpy as np
 import torch
-import yaml, time
-from collections import defaultdict
-from diffusion.score_model import TensorProductScoreModel
+from torch import distributions
+from torch.nn import CrossEntropyLoss
+import torch.nn.functional as F
 
 
-def get_model(args):
-    return TensorProductScoreModel(in_node_features=args.in_node_features, in_edge_features=args.in_edge_features,
-                                   ns=args.ns, nv=args.nv, sigma_embed_dim=args.sigma_embed_dim,
-                                   sigma_min=args.sigma_min, sigma_max=args.sigma_max,
-                                   num_conv_layers=args.num_conv_layers,
-                                   max_radius=args.max_radius, radius_embed_dim=args.radius_embed_dim,
-                                   scale_by_sigma=args.scale_by_sigma,
-                                   use_second_order_repr=args.use_second_order_repr,
-                                   residual=not args.no_residual, batch_norm=not args.no_batch_norm)
+def cal_loss_and_accuracy(outputs, labels, device):
+    """
+    Calculate loss and accuracy with Cross-Entropy Loss.
+    """
+    logits = outputs.logits
+    # Shift so that tokens < n predict n
+    shift_logits = logits[..., :-1, :].contiguous()
+    shift_labels = labels[..., 1:].contiguous().to(device)
+
+    # Flatten the tokens
+    # need to ignore mask:i, mask 0-5 id: 830
+    # shift_labels
+    # covert_maskid_to_padid
+    shift_labels = shift_labels.masked_fill((shift_labels < 630), 0)
+
+    loss_fct = CrossEntropyLoss(ignore_index=0, reduction='sum')
+    loss = loss_fct(shift_logits.view(-1, shift_logits.size(-1)), shift_labels.view(-1))
+
+    _, preds = shift_logits.max(dim=-1)
+    not_ignore = shift_labels.ne(0)
+    num_targets = not_ignore.long().sum().item()
+
+    correct = (shift_labels == preds) & not_ignore
+    correct = correct.float().sum()
+
+    accuracy = correct / num_targets
+    loss = loss / num_targets
+
+    return loss, accuracy
 
 
-def get_optimizer_and_scheduler(args, model):
-    if args.optimizer == 'adam':
-        optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=args.lr)
-    else:
-        raise NotImplementedError("Optimizer not implemented.")
+def get_all_normal_dis_pdf(voc_len=836, confs_num=629):
+    """
+    Calculate the probability density function
 
-    if args.scheduler == 'plateau':
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.7,
-                                                               patience=args.scheduler_patience, min_lr=args.lr / 100)
-    else:
-        print('No scheduler')
-        scheduler = None
+    Args:
+        voc_len (int, optional): Length of vocabulary. Defaults to 836.
+        confs_num (int, optional): Number of numerical tokens. Defaults to 629.
+    """
+    means = torch.arange(1, confs_num + 1)  # create x of normal distribution for conf num
+    std_dev = 2.0
+    normal_dist_list = [distributions.Normal(mean.float(), std_dev) for mean in means]
 
-    return optimizer, scheduler
+    # log PDF
+    pdf_list = []
+    zero_pdf = torch.zeros(voc_len)
+    zero_pdf[0] = 1
+    pdf_list.append(zero_pdf)
+    for idx, normal_dist in enumerate(normal_dist_list):
+        # if not confs num, make it as 0
+        pdf = torch.zeros(voc_len)
+        pdf[1:confs_num + 1] = normal_dist.log_prob(means.float()).exp().float()  # calculate PDF
+        # rate of ground truth 50% default is set to 4
+        pdf[idx + 1] = pdf[idx + 1] * 2
+        # normalized pdf
+        normalized_pdf = pdf / pdf.sum()
+        pdf_list.append(normalized_pdf)
+
+    return torch.stack(pdf_list)
 
 
-def save_yaml_file(path, content):
-    assert isinstance(path, str), f'path must be a string, got {path} which is a {type(path)}'
-    content = yaml.dump(data=content)
-    if '/' in path and os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
-        os.makedirs(os.path.dirname(path))
-    with open(path, 'w') as f:
-        f.write(content)
+def gce_loss_and_accuracy(outputs, labels, device, pdf_array=get_all_normal_dis_pdf()):
+    """
+    Calculate loss and accuracy with GCE loss.
+    """
+    logits = outputs.logits
+    # Shift so that tokens < n predict n
+    shift_logits = logits[..., :-1, :].contiguous()
+    shift_labels = labels[..., 1:].contiguous().to(device)
 
+    # Flatten the tokens
+    # need to ignore mask:i, mask 0-5 id: 830 smiles
+    # shift_labels
+    # covert_maskid_to_padid
+    shift_labels_copy = copy.deepcopy(shift_labels)
+    shift_labels_copy = shift_labels_copy.masked_fill((shift_labels_copy != 829), 0)
 
-class TimeProfiler:
-    def __init__(self):
-        self.times = defaultdict(float)
-        self.starts = {}
-        self.curr = None
+    # only calculate GCE to numerical tokens
+    shift_labels = shift_labels.masked_fill((shift_labels >= 630), 0)
+    shift_labels_copy_copy = copy.deepcopy(shift_labels)
+    shift_labels = shift_labels + shift_labels_copy
+    one_hot = F.one_hot(shift_labels, num_classes=836).float()  # One-hot encoding to labels
+    non_zero_indices = torch.nonzero(shift_labels_copy_copy)
 
-    def start(self, tag):
-        self.starts[tag] = time.time()
+    pdf_array = pdf_array.to(shift_labels.device).contiguous()
+    rows, li_indices = non_zero_indices[:, 0], non_zero_indices[:, 1]
+    poisson_one_hot = pdf_array[shift_labels[rows, li_indices]]
+    one_hot[rows, li_indices] = poisson_one_hot
 
-    def end(self, tag):
-        self.times[tag] += time.time() - self.starts[tag]
-        del self.starts[tag]
+    # custom cross entropy loss
+    logsoftmax = F.log_softmax(shift_logits, dim=-1)
+
+    # mask 0
+    not_ignore = shift_labels.ne(0)
+    one_hot = not_ignore.unsqueeze(-1) * one_hot
+
+    # / shift_labels.shape[0]
+    loss = -torch.sum(one_hot * logsoftmax)
+
+    _, preds = shift_logits.max(dim=-1)
+    num_targets = not_ignore.long().sum().item()
+    correct = (shift_labels == preds) & not_ignore
+    correct = correct.float().sum()
+    accuracy = correct / num_targets
+    loss = loss / num_targets
+
+    return loss, accuracy
