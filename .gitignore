@@ -1,1 +1,4 @@
 **/__pycache__
+*/*.pt
+*/*.bin
+*/__pycache__

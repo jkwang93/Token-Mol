@@ -118,10 +118,10 @@ if __name__ == '__main__':
     print('Model is loaded, now start generation...')
     all_output = []
     # Total number = range * batch size
-    for pocket in tqdm(eval_data_protein):
+    for pocket in eval_data_protein:
         one_output = []
         Seq_all = []
-        for i in range(args.epochs):
+        for i in tqdm(range(args.epochs)):
             Seq_list = predict(model, tokenizer, single_pocket=pocket,batch_size=25)
             Seq_all.extend(Seq_list)
         for j in Seq_all:
