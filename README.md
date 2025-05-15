@@ -1,10 +1,7 @@
 # Token-Mol
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-The repository is for **Token-Mol 1.0：tokenized drug design with large language model**
-
-[Preprint](https://arxiv.org/abs/2407.07930)
-
+The repository is for [**Token-Mol 1.0：tokenized drug design with large language model**](https://doi.org/10.1038/s41467-025-59628-y).
 
 ## Environment
 
