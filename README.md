@@ -13,12 +13,12 @@ Codes for reinforcement learning with docking can stably run **only on Linux**.
 
 ### Python Dependencies
 ```
-Python >= 3.8
-Pytorch >= 1.13.1
-RDKit >= 2022.09.1
-transformers >= 4.24.0
-networkx >= 2.8.4
-pandas >= 1.5.3
+Python == 3.8
+Pytorch == 1.13.1
+RDKit == 2022.09.1
+transformers == 4.24.0
+networkx == 2.8.4
+pandas == 1.5.3
 scipy == 1.10.0
 easydict (any version)
 ```
