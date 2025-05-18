@@ -1,10 +1,13 @@
-# Token-Mol
+# Token-Mol 1.0
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 The repository is for **Token-Mol 1.0：tokenized drug design with large language model**
 
-[Preprint](https://arxiv.org/abs/2407.07930)
+📢 Our Working has been published on [***Nature Communications***](https://www.nature.com/articles/s41467-025-59628-y)!
 
+## Latest Update
+> We have now supplemented the encoder for the pocket, so there is no need to obtain the GVP code from ResGen separately to obtain the pickle file of the protein embedding.  
+> For information on how to use the encoder, please refer to the updated encoding part of **Generation** section.
 
 ## Environment
 
@@ -21,6 +24,18 @@ networkx == 2.8.4
 pandas == 1.5.3
 scipy == 1.10.0
 easydict (any version)
+```
+
+If want to customize pocket, additional dependencies should be install from ResGen:
+```
+#pyg
+pyg_lib == 0.4.0
+torch_cluster == 1.6.1
+torch_scatter == 2.1.1
+torch_sparse == 0.6.17
+torch_spline_conv == 1.2.2
+
+biopython
 ```
 
 ### Software Dependencies
@@ -78,7 +93,18 @@ python gen.py --model_path ./Trained_model/pocket_generation.pt --protein_path .
 # multiple pockets
 python gen.py --model_path ./Trained_model/pocket_generation.pt --protein_path ./data/test_protein_represent.pkl --output_path test.csv --batch 25 --epoch 4
 ```
-The pocket can be encoded with [GVP](https://github.com/drorlab/gvp-pytorch). Original pockets in pdb format are attached at `data/test_set.zip` and `example/3rfm_a2a-pocket10.pdb`.
+
+#### Encoding
+To encode your own custom pocket, you first need to download the [ResGen's trained model](https://drive.google.com/file/d/1RoVnHBLuPGFh2qGlCMoCRKtY-Rribp0j/view?usp=sharing) and place it in the `encoder/ckpt` folder.
+
+Then run:
+```
+python encoder/encode.py --pdb_file <pdb_file> --sdf_file <sdf_file> --output_name <name>
+```
+
+Here `sdf_file` is the reference ligand within the pocket, and `output_name` is the filename of pickle file that you can found it at `encoder/embeddings/<output_name>.pkl`.
+
+Original pockets in pdb format are attached at `data/test_set.zip` and `example/3rfm_a2a-pocket10.pdb`.
 
 ### Post-processing
 The generated molecules should be processed and **converted from sequences to RDKit RDMol objects** and then used for subsequent applications.  
