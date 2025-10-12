@@ -58,10 +58,10 @@ class EarlyStopping:
         # torch.save(model.state_dict(), 'checkpoint.pt')
         print('now best_score:', self.best_score)
 
-        # model_to_save = model.module if hasattr(model, 'module') else model
-        # model_to_save.save_pretrained(model_name)
+        model_to_save = model.module if hasattr(model, 'module') else model
+        model_to_save.save_pretrained(model_name)
 
-        torch.save(model.state_dict(), model_name + '_early_stop.pt')
+        # torch.save(model.state_dict(), model_name + 'AMP_checkpoint.pt')
 
 
 
