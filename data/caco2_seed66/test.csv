@@ -1,0 +1,92 @@
+smiles_label_torsion_all
+C N 1 C C C C / C = C \ [C@@H] 2 C [C@@] 2 ( C ( = O ) N S ( = O ) ( = O ) C 2 C C 2 ) N C ( = O ) [C@@H] 2 C [C@@H] ( O c 3 n c ( - c 4 c c c c c 4 ) n c 4 c c c c c 3 4 ) C [C@H] 2 C 1 = O GEO 0.06 1.76 -2.00 0.45 -2.39 1.34 -1.12 labels -4.6799998
+C C [C@] 1 ( O ) C ( = O ) O C c 2 c 1 c c 1 n ( c 2 = O ) - c 2 c c 3 c c c c c 3 n c 2 C 1 GEO 2.87 labels -4.3318486
+C [C@@H] ( N C ( = O ) C 1 ( N C ( = O ) C ( F ) ( F ) F ) C C 1 ) c 1 c c c ( - c 2 c c ( Cl ) c c ( F ) c 2 - c 2 n n n ( C ) n 2 ) c c 1 F GEO -0.42 0.10 -0.87 -1.93 1.62 -0.06 -1.87 1.94 -0.74 labels -4.6382723
+C N ( C ) C C C ( c 1 c c c ( Cl ) c c 1 ) c 1 c c c c n 1 GEO 2.59 -2.68 2.94 -1.24 1.86 labels -4.2800002
+O = C 1 N c 2 c c c ( Cl ) c c 2 [C@@] ( C # C C 2 C C 2 ) ( C ( F ) ( F ) F ) O 1 GEO 1.07 0.15 -0.68 0.85 labels -4.0500002
+O = C ( N c 1 c c c c ( C ( F ) ( F ) F ) c 1 ) c 1 c c c c c 1 N C c 1 c c n c c 1 GEO 0.21 -2.34 0.16 -1.57 -2.78 1.01 3.14 labels -5.158072
+C N 1 C ( = O ) C C ( N 2 C C C N ( C C C N 3 c 4 c c c c c 4 C O c 4 c c c ( C ( = O ) O ) c c 4 3 ) C C 2 ) N ( C ) C 1 = O GEO -2.13 -2.02 -2.37 1.48 0.33 -0.47 labels -5.5
+C [C@H] ( N ) C c 1 c c c c c 1 GEO -1.55 2.10 labels -4.3899999
+C C ( C ) C N C ( = O ) [C@H] ( C ) N C [C@H] ( C c 1 c c c c c 1 ) N C ( = O ) c 1 c c ( C ( = O ) N [C@H] ( C ) c 2 c c c ( F ) c c 2 ) c c ( N ( C ) S ( C ) ( = O ) = O ) c 1 GEO 1.28 -3.14 0.77 0.31 1.62 -0.35 3.14 -1.09 2.93 1.73 -0.83 -3.14 2.90 -2.45 -1.48 3.14 -1.81 0.79 labels -5.0
+C O C C n 1 c c ( C ( C ( = O ) N S ( = O ) ( = O ) c 2 c c c ( C ) c c 2 O C ) c 2 c c c 3 c ( c 2 ) O C O 3 ) c 2 c c c ( F ) c c 2 1 GEO -2.96 -3.06 1.49 -0.90 0.03 -1.57 -3.08 -1.21 -2.08 -0.71 labels -5.720623
+C O C ( = O ) C 1 = C ( C ) N C ( C ) = C ( C ( = O ) O C ) C 1 c 1 c c c c c 1 N ( O ) O GEO -3.04 -1.09 1.73 2.66 -2.32 -0.23 labels -4.3319983
+C C ( = O ) N C C 1 C N ( c 2 c c c ( C ( C ) = O ) c c 2 ) S ( = O ) N 1 C GEO -1.41 1.46 0.04 -2.38 2.93 labels -5.1199999
+c 1 c c c ( - c 2 c c n c c 2 ) c c 1 GEO 2.20 labels -4.0680037
+C n 1 c ( N 2 C C C N ( C C C N 3 c 4 c c c c c 4 S c 4 c c c ( C C ( = O ) O ) c c 4 3 ) C C 2 ) c c ( = O ) n ( C ) c 1 = O GEO -1.62 -1.20 -2.33 -0.64 1.82 1.41 0.51 labels -5.2600002
+C O c 1 c c c 2 c ( = O ) c c ( - c 3 c c c c c 3 ) o c 2 c 1 GEO 0.00 2.40 labels -4.6479459
+C [C@@H] 1 O [C@@H] ( c 2 c c c ( Cl ) c c 2 ) O C [C@H] 1 N C ( = O ) C c 1 c c c c c 1 GEO -0.09 -0.93 -0.14 0.86 1.46 labels -4.9920392
+C N 1 [C@@H] 2 C C [C@@H] 1 C C ( O C ( = O ) C ( C O ) c 1 c c c c c 1 ) C 2 GEO 3.14 -1.62 1.05 1.74 -2.20 labels -4.7016673
+C C ( C ) ( O ) C C [C@@H] ( O ) [C@] ( C ) ( O ) [C@H] 1 C C [C@@] 2 ( O ) C 3 = C C ( = O ) [C@@H] 4 C [C@@H] ( O ) [C@@H] ( O ) C [C@@] 4 ( C ) [C@H] 3 C C [C@] 1 2 C GEO -3.04 3.04 1.47 -1.12 1.15 labels -4.79
+C C ( C ) N C [C@H] ( C O c 1 c c c c 2 c c c c c 1 2 ) O C ( = O ) C 1 C C 1 GEO -0.62 -3.14 2.32 2.24 3.14 -3.14 3.04 0.50 1.55 labels -4.5100002
+N C ( = O ) / C = C ( \ c 1 c c c c ( F ) c 1 ) c 1 c c c 2 n c ( N ) n ( S ( = O ) ( = O ) N C ( = O ) N 3 C C O C C 3 ) c 2 c 1 GEO -2.68 -0.13 -1.94 -2.13 0.70 -1.02 0.56 2.79 labels -4.7399998
+C S ( = O ) ( = O ) N [C@H] ( C c 1 c c c c c 1 ) C ( = O ) N 1 C C C [C@H] 1 C ( = O ) N C C 1 C C N ( C ( = N ) N ) C C 1 GEO 1.20 -2.53 1.54 0.13 1.39 -0.25 -0.17 -3.14 -3.14 -1.90 -1.79 labels -6.5611248
+C C O C ( = O ) C O c 1 c c c ( C ( = O ) C N 2 C C N ( C 3 C C N ( C ( = O ) O C ( O C ( C ) = O ) C ( C ) ( C ) C ) C C 3 ) C C 2 = O ) c c 1 GEO -0.90 0.98 -2.27 3.14 -0.62 2.33 2.94 2.09 -0.48 0.50 -2.71 -0.59 -2.89 3.14 -1.29 labels -4.02
+N # C c 1 c c c ( N C C ( F ) ( F ) c 2 c c c c c 2 ) c ( F ) c 1 C C ( = O ) N C C O N C ( = N ) N GEO -1.79 1.41 0.51 1.62 1.60 1.80 -1.13 -3.14 -3.14 -0.29 -1.70 -0.95 3.05 labels -5.6479244
+C N C ( = O ) [C@@H] ( C c 1 c c c c c 1 ) N C ( = O ) [C@@H] ( C ) N C ( C ) = O GEO -0.12 1.52 -1.46 2.75 -1.08 0.20 1.90 1.78 3.14 labels -5.7484403
+O = C ( c 1 c c c ( F ) c c 1 ) C 1 C C N ( C C n 2 c ( = O ) [nH] c 3 c c c c c 3 c 2 = O ) C C 1 GEO 1.09 0.41 -1.28 -1.64 2.33 labels -4.4400001
+N = C ( N ) c 1 c c c c ( C C ( C C ( = O ) N 2 C C C C C 2 C ( = O ) O ) N S ( = O ) ( = O ) c 2 c c c 3 c c c c c 3 c 2 ) c 1 GEO -0.59 -1.38 2.78 -1.45 2.21 -0.11 -0.90 2.49 0.86 -1.63 labels -7.3814998
+C C C C C C [C@H] ( N ) C ( = O ) N [C@@H] ( C c 1 c c c ( O ) c c 1 ) C ( = O ) N 1 C C C [C@@H] 1 C ( = O ) N [C@@H] ( C c 1 c [nH] c 2 c c c c c 1 2 ) C ( = O ) N [C@@H] ( C c 1 c c c c c 1 ) C ( = O ) N [C@@H] 1 O [C@H] ( C ( N ) = O ) [C@@H] ( O ) [C@H] ( O ) [C@H] 1 O GEO -1.68 2.90 1.82 0.51 -2.94 1.82 3.14 1.39 -3.14 -1.61 -1.52 0.30 3.14 -3.14 3.04 1.37 -1.52 0.77 -2.29 2.97 3.14 0.12 1.17 -2.78 -1.44 3.14 labels -5.79
+C [C@] 1 2 C [C@@H] ( O ) [C@H] 3 [C@@H] ( C C C 4 = C C ( = O ) C = C [C@@] 4 3 C ) [C@@H] 1 C C [C@] 2 ( O ) C ( = O ) C O GEO -2.74 -1.67 labels -5.3699999
+C [C@H] ( N ) C ( = O ) O GEO -0.98 labels -5.4201083
+C C ( C ( = O ) O ) c 1 c c c ( C C 2 C C C C 2 = O ) c c 1 GEO -2.60 -2.69 -2.25 1.21 labels -4.3499999
+N C ( N ) = N N = C c 1 c ( Cl ) c c c c 1 Cl GEO -0.10 -3.14 -3.14 -2.55 labels -4.3299999
+O = C ( / C = C / c 1 c c c ( O ) c ( O ) c 1 / C = C / c 1 c c c ( O ) c ( O ) c 1 ) O C ( C c 1 c c c ( O ) c ( O ) c 1 ) C ( = O ) O GEO -0.68 -0.41 3.14 -0.47 1.23 -3.14 0.80 -2.92 -2.84 2.46 1.16 labels -7.2277412
+C = C C c 1 c c ( O C ) c ( O C ( C ) C ( O ) c 2 c c ( O ) c c ( O C ) c 2 ) c ( O C ) c 1 GEO 2.16 -1.41 -0.09 1.23 1.15 0.68 2.35 0.00 -3.03 labels -4.6500001
+C O C ( = O ) c 1 c c ( O C ) c 2 c ( c 1 - c 1 c ( C ( = O ) O C ) c c ( O C ) c 3 c 1 O C O 3 ) O C O 2 GEO 0.27 0.86 2.93 -1.94 -2.41 2.90 -0.05 labels -4.1687455
+C [C@@H] 1 O [C@@H] ( c 2 c c c ( N ( O ) O ) c c 2 ) O C [C@H] 1 N C ( = O ) C c 1 c c c c c 1 GEO 1.59 -0.15 0.20 -2.40 -1.74 -0.21 labels -4.9846401
+O = C 1 N C ( = O ) C ( c 2 c c c c c 2 ) ( c 2 c c c c c 2 ) C ( = O ) N 1 GEO -0.20 -1.33 labels -4.46
+O = C ( O ) C O C C N 1 C C N ( C ( c 2 c c c c c 2 ) c 2 c c c ( Cl ) c c 2 ) C C 1 GEO 0.87 0.59 2.58 -1.94 1.30 -3.13 2.59 -1.19 labels -5.5
+C O c 1 c c ( N ) c ( Cl ) c c 1 C ( = O ) N C 1 C C N ( C C C O c 2 c c c ( F ) c c 2 ) C C 1 O C GEO -0.51 -0.60 -1.90 -1.29 -3.14 -3.14 2.28 0.97 -2.07 1.86 labels -4.52
+C O c 1 c c c ( - c 2 c c ( = O ) c 3 c ( O C ) c c ( O C ) c c 3 o 2 ) c c 1 GEO 0.27 0.75 3.06 -3.14 labels -4.5595455
+O N ( O ) N C 1 = N C C N 1 C c 1 c c c ( Cl ) n c 1 GEO 3.10 0.10 0.60 -1.99 labels -4.6677732
+C O C ( = O ) [C@H] ( C ) N [P@] ( = O ) ( O C [C@@H] 1 C = C [C@H] ( n 2 c c ( C ) c ( = O ) [nH] c 2 = O ) O 1 ) O c 1 c c c ( O C ) c c 1 GEO 0.25 -1.75 -1.42 -0.24 2.19 -2.62 -1.91 -0.79 -0.93 -0.60 -3.08 labels -5.9819288
+C c 1 c ( O ) c 2 c ( c ( C ) c 1 C C O ) C ( = O ) C ( C ) ( C ) C 2 GEO 1.30 1.51 labels -4.7597256
+C n 1 n n n c 1 - c 1 c c c c ( N C ( = O ) N [C@@H] 2 C C C C [C@H] 2 C N 2 C C C [C@@H] ( C c 3 c c c ( F ) c c 3 ) C 2 ) c 1 GEO 1.90 -1.81 -1.13 2.29 3.14 -0.44 -2.64 -1.10 -1.68 labels -5.6989698
+O = C ( O ) C C ( C C 1 C C N ( C ( = O ) C C c 2 c c c 3 c ( n 2 ) N C C C 3 ) C C 1 ) C 1 C N c 2 c c c c c 2 C 1 GEO 2.58 -1.37 -0.04 -0.76 -0.42 -1.40 -2.09 2.51 0.83 labels -5.5999999
+C c 1 c ( O ) c c c c 1 C ( = O ) N [C@@H] ( C S c 1 c c c c c 1 ) [C@H] ( O ) C N 1 C [C@H] 2 C C C C [C@H] 2 C [C@H] 1 C ( = O ) N C ( C ) ( C ) C GEO -1.06 -2.84 2.57 -1.32 -1.29 1.87 0.63 3.10 -1.94 0.70 -2.00 1.38 labels -6.1500001
+N c 1 n c ( / C ( = C \ C C ( = O ) O ) C ( = O ) N C 2 C ( = O ) N 3 C ( C ( = O ) O ) = C C S C 2 3 ) c s 1 GEO -0.94 2.07 3.14 -1.58 -2.56 2.47 2.33 -3.14 labels -6.0604806
+C C ( C ) c 1 c ( C ( = O ) N c 2 c c c c c 2 ) c ( - c 2 c c c c c 2 ) c ( - c 2 c c c ( F ) c c 2 ) n 1 C C [C@@H] ( O ) C [C@@H] ( O ) C C ( = O ) O GEO -1.88 -0.87 3.14 -3.11 -1.05 1.91 -1.51 3.04 -0.72 2.79 -0.47 0.95 1.24 labels -5.3099999
+C C ( = O ) c 1 c c c c ( N C ( = O ) N [C@@H] 2 C C C C [C@H] 2 C N 2 C C C [C@@H] ( C c 3 c c c ( F ) c c 3 ) C 2 ) c 1 GEO -3.14 -2.61 -0.59 2.38 -2.46 -1.75 0.26 -2.69 -1.15 labels -4.9586072
+C C O c 1 c c c c ( N C ( = O ) O C C N 2 C C C C 2 ) c 1 GEO -3.14 0.39 0.39 -0.35 2.76 -1.77 2.49 2.98 labels -4.5500002
+C O c 1 c c ( O C ) c 2 c ( = O ) c c ( - c 3 c c c c c 3 ) o c 2 c 1 GEO 3.14 0.02 -2.38 labels -4.6313224
+C N [C@@H] ( C C S C ) C ( = O ) N C ( = O ) [C@H] ( C c 1 c c c c c 1 ) N C ( = O ) C N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@@H] ( N ) C c 1 c c c ( O ) c c 1 GEO -0.05 -1.87 0.07 -1.10 3.14 -0.57 0.52 -1.29 0.83 1.90 1.57 3.14 3.00 -1.21 -1.03 1.67 3.14 0.53 -2.14 1.58 -0.68 labels -7.3099999
+C C ( C ) C [C@H] ( O ) [C@H] ( O ) [C@H] ( C C 1 C C C C C 1 ) N C ( = O ) C C C C C c 1 c c c c c 1 GEO 3.14 -1.38 -2.94 -2.82 0.59 -2.13 -2.75 0.20 -3.14 -1.99 3.13 -3.14 -2.96 3.14 labels -5.1500001
+N = C ( N ) c 1 c c c c ( C C ( C C ( = O ) N 2 C C C C ( C ( = O ) O ) C 2 ) N S ( = O ) ( = O ) c 2 c c c 3 c c c c c 3 c 2 ) c 1 GEO 3.14 0.26 -2.16 2.55 -0.37 -0.92 -0.45 -0.38 2.97 -0.66 labels -7.3820248
+C N C ( = O ) [C@@H] ( C c 1 c c c c c 1 ) N C ( = O ) [C@@H] ( C c 1 c c c c c 1 ) N C ( C ) = O GEO -0.31 1.57 -1.50 -3.14 1.95 -0.05 1.45 -1.62 -3.14 -1.18 -3.00 labels -5.0499268
+C C O C ( = O ) C O c 1 c c c ( C ( = O ) C N 2 C C N ( C 3 C C N ( C ( = O ) O C ( C ) O C ( C ) = O ) C C 3 ) C C 2 = O ) c c 1 GEO -1.49 0.11 2.36 -0.82 -0.21 -0.56 1.92 -2.38 2.59 -0.24 1.90 -0.88 2.67 2.32 labels -4.2800002
+C C ( C ) ( C ) N C ( = O ) C 1 C C 2 C C C C C 2 C N 1 C C ( O ) C ( C c 1 c c c c c 1 ) N C ( = O ) C ( C C ( N ) = O ) N C ( = O ) c 1 c c c 2 c c c c c 2 n 1 GEO 2.57 2.90 1.74 0.63 -0.76 -0.89 -2.91 1.39 1.08 -0.37 -1.08 1.55 -2.41 2.89 -0.25 3.00 labels -6.2800002
+C [C@H] ( C S N = O ) C ( = O ) N 1 C C C [C@@H] 1 C ( = O ) O GEO 2.98 1.76 3.14 -3.14 0.31 1.08 labels -4.5
+C = C ( C ) C N c 1 c c c ( C ( C ) C ( = O ) O ) c c 1 GEO -2.13 3.09 -2.54 -2.58 -1.84 labels -4.3400002
+C = C C c 1 c c ( O C ) c ( O C ( C ) C c 2 c c ( O C ) c ( O C ) c ( O C ) c 2 ) c ( O C ) c 1 GEO 2.12 -1.48 0.32 -1.08 -1.68 -1.28 1.31 -0.36 1.61 3.14 -3.14 labels -4.73
+C N ( O C C N C ( = O ) C c 1 c ( C # N ) c c c ( N C C ( F ) ( F ) c 2 c c c c n 2 ) c 1 F ) C ( = N ) N GEO 1.61 0.14 -2.29 0.07 -3.14 -0.36 1.03 -1.71 0.88 -0.70 3.14 -0.73 -3.00 labels -6.3723636
+C O [C@@H] 1 C [C@H] 2 C ( = O ) C = C 3 [C@H] ( C C [C@] 4 ( C ) [C@@H] ( [C@@] ( C ) ( O ) [C@@H] ( C C C ( C ) C ) O C ) C C [C@@] 3 4 O ) [C@] 2 ( C ) C [C@@H] 1 O GEO 0.08 0.83 -2.72 -2.13 3.05 3.10 -3.12 labels -4.5380535
+N = C ( N ) N C C C [C@@H] ( N C ( = O ) [C@@H] ( N ) C c 1 c c c ( O ) c c 1 ) C ( = O ) N [C@@H] ( C c 1 c c c c c 1 ) C ( = O ) N [C@@H] ( C c 1 c c c c c 1 ) C ( N ) = O GEO -3.14 -0.30 -1.50 -3.14 2.10 -1.61 -2.11 0.94 -2.77 3.14 3.14 -3.14 2.46 -1.96 -0.99 -0.72 -3.14 2.26 -2.92 3.14 3.14 labels -7.7600002
+C S ( = O ) ( = O ) N c 1 c c c 2 c ( c 1 ) S ( = O ) ( = O ) N / C ( = C 1 \ C ( = O ) [C@@H] 3 [C@H] 4 C C [C@H] ( C 4 ) [C@@H] 3 N ( C c 3 c c c ( F ) c c 3 ) C 1 = O ) N 2 GEO -1.30 -1.01 0.73 1.23 -2.07 labels -5.8899999
+C O c 1 c c c ( C C N ( C ) C C C [C@] ( C # N ) ( c 2 c c c ( O C ) c ( O C ) c 2 ) C ( C ) C ) c c 1 O C GEO -0.05 1.38 2.74 -1.47 1.48 0.99 2.31 2.15 1.42 -1.76 -0.26 0.10 -2.69 0.03 labels -4.9612799
+C C ( C ) S ( = O ) ( = O ) n 1 c ( N ) n c 2 c c c ( / C ( = C / C ( N ) = O ) c 3 c ( F ) c ( F ) c ( F ) c ( F ) c 3 F ) c c 2 1 GEO -1.97 -1.77 -1.92 3.01 -1.55 -2.99 labels -4.1999998
+O = c 1 c ( - c 2 c c c ( O ) c c 2 ) c o c 2 c ( [C@@H] 3 O [C@H] ( C O ) [C@@H] ( O ) [C@H] ( O ) [C@H] 3 O ) c ( O ) c c c 1 2 GEO 2.23 -2.69 2.95 labels -6.3989701
+N C ( = O ) c 1 c c c c ( C c 2 n c c c n 2 ) c 1 GEO 2.73 -1.69 -1.50 labels -4.4609237
+C O c 1 c c c c ( - n 2 c ( = O ) n ( C c 3 c c c c c 3 C # N ) c ( = O ) n ( C [C@H] ( N ) c 3 c c c c c 3 ) c 2 = O ) c 1 F GEO 0.11 0.68 -1.45 -0.93 -0.24 -1.15 -1.16 1.06 labels -4.5917602
+C O c 1 c c c ( C C 2 c 3 c c ( O C ) c ( O C ) c c 3 C C N 2 C ) c c 1 O C GEO 0.29 -0.09 -1.38 -1.63 1.05 0.07 labels -4.5497985
+C c 1 c c c 2 c c ( C ( = O ) N C 3 ( C ( = O ) N [C@H] ( C c 4 c c c c c 4 ) C ( = O ) N C C 4 C C N ( C C 5 C C O C C 5 ) C C 4 ) C C C C 3 ) s c 2 c 1 GEO -2.66 -2.59 2.31 -1.10 1.92 -0.85 -3.14 -0.04 -2.15 1.59 1.27 1.68 3.14 1.63 labels -5.2912149
+C C C C C O c 1 c c c c ( N C ( = O ) O C C N 2 C C C C 2 ) c 1 GEO -3.03 -1.15 -1.42 2.91 0.85 0.73 -0.40 2.44 3.14 1.18 -3.14 labels -4.77
+N c 1 n c 2 c ( n c n 2 C 2 [C@@H] ( C O ) C [C@@H] 2 C O ) c ( = O ) [nH] 1 GEO 2.92 -0.71 2.14 labels -6.0599999
+O = C 1 C C C ( N 2 C ( = O ) c 3 c c c c c 3 C 2 = O ) C ( = O ) N 1 GEO -1.64 labels -4.6999998
+C O c 1 c c c 2 c c ( [C@H] ( C ) C ( = O ) O ) c c c 2 c 1 GEO -0.07 0.63 1.61 labels -4.6599998
+C c 1 c c ( C [C@H] ( N S ( = O ) ( = O ) c 2 c c c c c 2 ) c 2 n c 3 c c c c c 3 [nH] 2 ) c c c 1 [C@@H] 1 C C ( = O ) N = [S@] 1 ( = O ) [O-] GEO -2.13 -3.14 -3.14 1.42 2.89 1.53 0.29 labels -6.3989701
+C [C@@H] ( O ) [C@@H] 1 N C ( = O ) [C@H] ( C C C C N ) N ( C ) C ( = O ) [C@@H] ( C c 2 c [nH] c 3 c c c c c 2 3 ) N C ( = O ) [C@H] ( C c 2 c c c c c 2 ) N C ( = O ) [C@@H] 2 C C C N 2 C ( = O ) [C@H] ( C c 2 c c c c c 2 ) N ( C ) C 1 = O GEO -2.47 -0.40 -1.04 3.14 2.96 -0.50 -2.00 1.26 -2.65 1.33 -1.03 labels -6.5700002
+O c 1 c c ( O ) c 2 c ( c 1 ) O [C@H] ( c 1 c c ( O ) c ( O ) c ( O ) c 1 ) [C@H] ( O ) C 2 GEO -1.43 labels -6.8284068
+C C C O C O C C 1 C N ( c 2 c c c ( C ( C ) = O ) c c 2 ) C ( = O ) O 1 GEO 1.10 -3.02 -3.14 0.93 1.89 0.92 -2.72 -0.02 labels -3.95
+C [C@H] 1 C ( = O ) N [C@H] ( C ) C ( = O ) N ( C ) [C@H] ( C ) C ( = O ) N ( C ) [C@@H] ( C ) C ( = O ) N ( C ) [C@H] ( C ) C ( = O ) N ( C ) [C@@H] ( C ) C ( = O ) N 1 C GEO [SEP] labels -5.3000002
+C [C@@H] 1 N C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C 1 = O GEO [SEP] labels -5.8200002
+C [C@@H] 1 N C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C ( = O ) [C@@H] ( C ) N C 1 = O GEO [SEP] labels -5.8200002
+C C ( C ) ( C ( = O ) O ) c 1 c c c ( C ( O ) C C C N 2 C C C ( C ( O ) ( c 3 c c c c c 3 ) c 3 c c c c c 3 ) C C 2 ) c c 1 . Cl GEO [SEP] labels -5.6999998
+C [C@@H] 1 N C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C 1 = O GEO [SEP] labels -5.8200002
+C = C ( c 1 c c c c c 1 ) [C@H] 1 O C [C@@H] ( N ) [C@H] ( C ) O 1 GEO [SEP] labels -4.9880071
+C [C@@H] 1 N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N ( C ) C 1 = O GEO [SEP] labels -5.8200002
+C [C@@H] 1 N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N ( C ) C 1 = O GEO [SEP] labels -5.3000002
+C C C ( C ) ( C ) C ( = O ) O [C@@H] 1 C [C@H] ( C ) C = C 2 C = C [C@@H] ( C ) [C@@H] ( C C [C@@H] 3 C [C@H] ( O ) C C ( = O ) O 3 ) [C@@H] 2 1 GEO [SEP] labels -5.1700001
+C [C@@H] 1 N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N C 1 = O GEO [SEP] labels -5.8200002
+C c 1 n c c c 2 c 1 [nH] c 1 c c ( O ) c c c 1 2 GEO [SEP] labels -5.302259
+C [C@@H] 1 N C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C 1 = O GEO [SEP] labels -5.8200002
+C [C@@H] 1 N C ( = O ) [C@@H] ( C ) N ( C ) C ( = O ) [C@H] ( C ) N ( C ) C ( = O ) [C@@H] ( C ) N C ( = O ) [C@@H] ( C ) N C ( = O ) [C@H] ( C ) N ( C ) C 1 = O GEO [SEP] labels -5.8200002
