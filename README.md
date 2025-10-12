@@ -6,8 +6,16 @@ The repository is for **Token-Mol 1.0：tokenized drug design with large languag
 📢 Our Working has been published on [***Nature Communications***](https://www.nature.com/articles/s41467-025-59628-y)!
 
 ## Latest Update
-> We have now supplemented the encoder for the pocket, so there is no need to obtain the GVP code from ResGen separately to obtain the pickle file of the protein embedding.  
-> For information on how to use the encoder, please refer to the updated encoding part of **Generation** section.
+> We have now supplemented the downstream molecular property prediction section with code. Prior to running, the original dataset requires data type processing. After processing, refer to the CSV file within `data/caco2_seed66/*.csv`.
+
+```
+# finetune
+python mol_property_reg_finetune.py --lr=1e-5 --batch_size=8 --property_name caco2 --train_raw_path ./data/caco2/train.csv --valid_raw_path ./data/caco2/valid.csv --save_model_path=./fine_models/caco2 --final_model_path=./fine_models/caco2  --epochs 650 --vocab_path ./data/torsion_version/torsion_voc_property.csv
+
+# pred
+python mol_property_reg_pred.py --property_name caco2 --test_raw_path  ./data/caco2/test.csv --vocab_path ./data/torsion_version/torsion_voc_property.csv
+ --model_path ./fine_models/caco2
+```
 
 ## Environment
 
