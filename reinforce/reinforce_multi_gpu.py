@@ -25,7 +25,7 @@ from transformers import GPT2Config
 from smi_torsion_2_molobj import construct_molobj
 from reward_score import scoring
 from MCMG_utils.data_structs import Experience
-from utils import Variable, unique, read_data, decode
+from MCMG_utils.utils import Variable, unique, read_data, decode
 
 warnings.filterwarnings("ignore")
 
