@@ -1,6 +1,23 @@
+'''
+Date: 2025-12-01 17:48:38
+LastEditors: Rui Qin
+LastEditTime: 2025-12-01 17:50:28
+'''
 import torch
 import numpy as np
 from rdkit import Chem
+import pickle
+
+def read_data(path):
+    data = []
+    with open(path, 'rb') as f:
+        while True:
+            try:
+                aa = pickle.load(f)
+                data.extend(aa)
+            except EOFError:
+                break
+    return data
 
 def Variable(tensor):
     """Wrapper for torch.autograd.Variable that also accepts
