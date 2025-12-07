@@ -6,7 +6,7 @@ import torch
 from transformers.models.gpt2.modeling_gpt2 import GPT2Attention, GPT2Model
 from transformers.modeling_outputs import CausalLMOutputWithCrossAttentions
 from transformers.models.gpt2 import GPT2LMHeadModel
-from utils import Variable
+from MCMG_utils.utils import Variable
 import torch.nn as nn
 import torch.nn.functional as F
 from typing import Optional, Tuple, Union
