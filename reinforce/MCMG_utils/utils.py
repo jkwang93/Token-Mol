@@ -1,7 +1,7 @@
 '''
 Date: 2025-12-01 17:48:38
 LastEditors: Rui Qin
-LastEditTime: 2025-12-01 17:50:28
+LastEditTime: 2025-12-07 22:46:28
 '''
 import torch
 import numpy as np
@@ -61,3 +61,11 @@ def unique(arr):
     if torch.cuda.is_available():
         return torch.LongTensor(np.sort(idxs)).cuda()
     return torch.LongTensor(np.sort(idxs))
+
+def decode(matrix):
+    chars = []
+    for i in matrix:
+        if i == '<|endofmask|>': break
+        chars.append(i)
+    seq = " ".join(chars)
+    return seq

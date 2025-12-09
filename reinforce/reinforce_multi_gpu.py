@@ -157,8 +157,8 @@ def train_agent(rank, world_size, n_steps, batch_size, max_length, sigma, experi
     rank, world_size = setup(rank, world_size)
     torch.cuda.set_device(rank)
 
-    #tokenizer = ExpressionBertTokenizer('../pocket_generate/data/torsion_version/torsion_voc_pocket.csv')
-    tokenizer = ExpressionBertTokenizer('../data/torsion_version/torsion_voc_pocket.csv')
+    #tokenizer = ExpressionBertTokenizer('./pocket_generate/data/torsion_version/torsion_voc_pocket.csv')
+    tokenizer = ExpressionBertTokenizer('./data/torsion_version/torsion_voc_pocket.csv')
     start_time = time.time()
 
     Prior.to(rank)
@@ -281,7 +281,7 @@ if __name__ == "__main__":
     parser.add_argument('--sigma', action='store', dest='sigma', type=int,
                         default=60)
     parser.add_argument('--experience-replay', type=int, default=0)
-    parser.add_argument('--restore-from', default='../Trained_model/20epoch_every.pt',
+    parser.add_argument('--restore-from', default='./Trained_model/20epoch_every.pt',
                          help='Path for loading the model.')
     parser.add_argument('--agent', action='store', dest='agent_save',
                         default='reinforce.pt',
@@ -293,7 +293,6 @@ if __name__ == "__main__":
     # help='Path where results and model are saved. Default is data/results/run_<datetime>.')
 
     args = parser.parse_args()
-    args_list = list(vars(args).values())
 
     try:
         os.remove('every_steps_saved.pkl')
@@ -303,8 +302,8 @@ if __name__ == "__main__":
     except:
         pass
 
-    Prior = Token3D(pretrain_path='../pretrained_model', config=Ada_config)
-    Agent = Token3D(pretrain_path='../pretrained_model', config=Ada_config)
+    Prior = Token3D(pretrain_path='./Pretrained_model', config=Ada_config)
+    Agent = Token3D(pretrain_path='./Pretrained_model', config=Ada_config)
     restore_from = args.restore_from
 
     prior_param_dict = {key.replace("module.", ""): value for key, value in
@@ -315,8 +314,18 @@ if __name__ == "__main__":
     Prior.load_state_dict(prior_param_dict)
     Agent.load_state_dict(agent_param_dict)
 
-    args_list.append(Prior)
-    args_list.append(Agent)
+    args_list = [
+    args.world_size,
+    args.n_steps,
+    args.batch_size,
+    args.max_length,
+    args.sigma,
+    args.experience_replay,
+    args.agent_save,
+    args.protein_dir,
+    Prior,
+    Agent
+]
 
     mp.spawn(train_agent,
              args=args_list,
