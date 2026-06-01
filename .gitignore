@@ -2,3 +2,9 @@
 */*.pt
 */*.bin
 */__pycache__
+*.csv
+*/*.pyc
+results/
+data/test_set
+*/*.cpython-38.pyc
+.vscode/

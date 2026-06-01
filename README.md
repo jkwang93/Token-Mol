@@ -134,6 +134,17 @@ python confs_to_mols_pocket.py
 ```
 Processed molecules will save at `results` folder in `pickle` format.
 
+### Evaluation
+
+We have updated the evaluation scripts.  
+Once the generated CSV file is obtained, the entire post-processing and evaluation pipeline can be executed sequentially by running:
+
+1. `1_csv2sdf_with_pocket.py`
+2. `2_docking.py`
+3. `3_get_dock_pkl.py`
+
+These scripts will perform molecular post-processing,  docking, and result aggregation. Subsequently, statistical analyses and summary results can be obtained using `4_proper_analysis.ipynb`.
+
 ## Reinforcement learning
 ### Reward score
 You can customize reward score in `reinforce/reward_score.py`,and there are detailed description in the code.
